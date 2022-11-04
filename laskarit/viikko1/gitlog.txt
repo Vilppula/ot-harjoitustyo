@@ -1,0 +1,113 @@
+commit 0cf5d13c9b913f18ad864c6a5fe85f2c0544dbf8
+Author: Lasse Vilpponen <lasse.vilpponen@gmail.com>
+Date:   Fri Nov 4 18:00:40 2022 +0200
+
+    tiedosto file1 poistettu, file2 -> file22
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 0d2fae3ed1b00d798a12f79173b5281cc54776a5
+Author: Lasse Vilpponen <lasse.vilpponen@gmail.com>
+Date:   Fri Nov 4 17:53:44 2022 +0200
+
+    tiedostoja/file1, file2, file3 lisätty
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 940fce84253f9cf08e674d52bd9a972486b07221
+Author: Lasse Vilpponen <lasse.vilpponen@gmail.com>
+Date:   Fri Nov 4 17:49:21 2022 +0200
+
+    eka.txt ja kolmas.txt muokattu
+
+ eka.txt    | 4 +++-
+ kolmas.txt | 5 ++++-
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+commit 858c050c910c3371e6689e77015d28c85a1e8a4a
+Author: Lasse Vilpponen <lasse.vilpponen@gmail.com>
+Date:   Fri Nov 4 17:47:28 2022 +0200
+
+    tiedosto.txt -> eka.txt
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 315c99329c95d9839447c08b55034655649e1687
+Author: Lasse Vilpponen <lasse.vilpponen@gmail.com>
+Date:   Fri Nov 4 17:45:08 2022 +0200
+
+    toinen.txt poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 58498c96759033c73f1d392cbad33276f9275ae2
+Author: Lasse Vilpponen <lasse.vilpponen@gmail.com>
+Date:   Fri Nov 4 17:43:31 2022 +0200
+
+    tiedosto.txt lorem ipsum muutettu
+
+ tiedosto.txt | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+commit 1d9ef262c00d46f0ef5c1293205e2fcc38ca6bf7
+Author: Lasse Vilpponen <lasse.vilpponen@gmail.com>
+Date:   Fri Nov 4 17:40:41 2022 +0200
+
+    tiedosto.txt lorem ipsum
+
+ tiedosto.txt | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+commit b8e994711933f59799f6268be65e9adafa758085
+Author: Lasse Vilpponen <lasse.vilpponen@gmail.com>
+Date:   Fri Nov 4 17:35:41 2022 +0200
+
+    stuff:/stuff_file lisätty
+
+ stuff/stuff_file | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 2e1ff454cc82a6828badf3821e151a240396faf4
+Author: Lasse Vilpponen <lasse.vilpponen@gmail.com>
+Date:   Fri Nov 4 17:34:18 2022 +0200
+
+    toinen ja kolmas muokattu
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 1f9dd9fc1fe8e446cd64fcc0152324040b9cc6de
+Author: Lasse Vilpponen <lasse.vilpponen@gmail.com>
+Date:   Fri Nov 4 17:33:02 2022 +0200
+
+    kolmas lisätty
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 992a50f7924a8f4abc2e28aeb220ee7fcfe015db
+Author: Lasse Vilpponen <lasse.vilpponen@gmail.com>
+Date:   Fri Nov 4 17:31:58 2022 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit e488742a305a4e4a62c4320d83bdcccdca1bed5f
+Author: Lasse Vilpponen <lasse.vilpponen@gmail.com>
+Date:   Fri Nov 4 17:30:07 2022 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
