@@ -10,7 +10,7 @@ public class Maksukortti {
     }
  
     public int saldo() {
-        return saldo;
+        return this.saldo;
     }
  
     public void lataaRahaa(int lisays) {
