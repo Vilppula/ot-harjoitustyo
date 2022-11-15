@@ -1,16 +1,18 @@
 # Vaatimusmäärittely
 ## Sovelluksen tarkoitus
-Sovellus on peli, jonka tarkoitus on Tira2 kurssilla tehdyn laatikonsiirtelyalgoritmin innoittamana testata pelaajan
-kykyä löytää lyhyimpiä reittejä joita kulkemalla laatikko saadaan työnnettyä maaliin.
+Sovellus on ajanvietto-/pulmapeli, jonka tarkoitus on Tira2 kurssilla tehdyn laatikonsiirtelyalgoritmin innoittamana testata pelaajan
+kykyä löytää lyhyimpiä reittejä joita kulkemalla pelialueella oleva laatikko saadaan työnnettyä maaliin.
 ## Käyttäjät
-Luomalla käyttäjänimi on pelaajien mahdollista kilpailla toisiaan vastaan. Käyttäjällä on jokin käyttäjänimi ja
-sitä vastaava salasana. Tämä voidaan toteuttaa hyvin kevyenä ratkaisuna, sillä käyttätileihin ei liity mitään
+Luomalla pelaajaprofiili pelaajien on mahdollista tallettaa omia pelisuorituksiaan tai kilpailla toisiaan vastaan. 
+Käyttäjällä on jokin käyttäjänimi ja sitä vastaava salasana. Tämä voidaan toteuttaa hyvin kevyenä ratkaisuna, sillä käyttätileihin ei liity mitään
 arkaluontoista tietoa.
 ### Kirjautuminen uutena käyttäjänä
 - Käyttäjän tulee keksiä jokin pelaajanimi sekä sitä vastaava salasana.
+- Käyttäjällä voi olla profiilikuva
 - Uusi käyttäjä lisätään paikalliseen tietokantaan.
 ### Kirjautumisen jälkeen
-- Käyttäjäkohtaiset pelitulokset lisätään tietokantaan. Paras on aina voimassa.
+- Pääsy pelitiloihin
+- Käyttäjäkohtaiset pelitulokset tallennetaan tietokantaan. Paras pelialuekohtainen tulos jää voimaan.
 ## Pelin pelaaminen
 ### Pelimoodit
 Peliin on mahdollista kehittää lukuisia, tavoitteiltaan ja haastavuustasoltaan eroavia pelimoodeja. Näistä
@@ -63,3 +65,7 @@ Pelialueet saattavat jatkossa sisältää
 - pelaamista helpottavia tekijöitä (esim. liukuhihnoja)
 #### Verkkopeli
 Kahden tai useamman pelaajan peliä voi pelata myös verkon yli
+#### Tilastointia
+Lisätään tietokantaan tarkempaa pelaajakohtaista dataa.
+- Keskimääräinen läpäisyaika
+- Kahden pelaajan välinen keskinäinen paremmuus
