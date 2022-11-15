@@ -1,6 +1,6 @@
 # Vaatimusmäärittely
 ## Sovelluksen tarkoitus
-Sovellus on peli, jonka tarkoitus on Tira2 kurssilla tehdyn laatikonsiirtelyalgoritmin tapaan testata pelaajan
+Sovellus on peli, jonka tarkoitus on Tira2 kurssilla tehdyn laatikonsiirtelyalgoritmin innoittamana testata pelaajan
 kykyä löytää lyhyimpiä reittejä joita kulkemalla laatikko saadaan työnnettyä maaliin.
 ## Käyttäjät
 Luomalla käyttäjänimi on pelaajien mahdollista kilpailla toisiaan vastaan. Käyttäjällä on jokin käyttäjänimi ja
@@ -9,6 +9,8 @@ arkaluontoista tietoa.
 ### Kirjautuminen uutena käyttäjänä
 - Käyttäjän tulee keksiä jokin pelaajanimi sekä sitä vastaava salasana.
 - Uusi käyttäjä lisätään paikalliseen tietokantaan.
+### Kirjautumisen jälkeen
+- Käyttäjäkohtaiset pelitulokset lisätään tietokantaan. Paras on aina voimassa.
 ## Pelin pelaaminen
 ### Pelimoodit
 Peliin on mahdollista kehittää lukuisia, tavoitteiltaan ja haastavuustasoltaan eroavia pelimoodeja. Näistä
@@ -35,10 +37,29 @@ kilpailijan etenemistä. Muuttuvina tekijöinä pelialueella ovat erilaiset siir
 - Nimikenttä ja salasanakenttä
 - Pelaajan profiilikuvan lisäys
 ### Pelitilat
-- Linkki yhden pelaajan pelitilaan
-- Linkki kahden pelaajan pelitilaan
+- Yhden pelaajan pelinäkymä
+- Kahden pelaajan pelinäkymä
 ### Parhaiden pelituloksien näkymä
-- Listamuotoinen näkymä, jossa esitellään pelialue kohtaisesti parhaan tuloksen saanut pelaaja.
-  - Pelialueita voi selata.
+- Listamuotoinen näkymä, jossa esitellään pelialuekohtaisesti parhaan tuloksen saanut pelaaja.
+  - Eri pelialueita voi selata.
 ### Pelinäkymä
-- Päivittyvä näkymä pelialueesta. Sisältää pelaajan, laatikon, kiinteät esteet ja muuttuvat tekijät.
+- Päivittyvä näkymä pelialueesta
+  - pelaaja/pelaajat
+  - laatikko/laatikot
+  - kiinteät esteet ja muuttuvat tekijät.
+  - laskurit
+## Mahdollisuudet jatkokehitykselle
+#### Lisää pelitiloja
+- Aikarajoitettu pelitila
+- Useamman laatikon peli
+#### Useamman pelaajan peli
+- Useamman kuin kahden pelaajan välinen mittelö samalla pelialueella.
+- Ryhmien välinen kilpailu, jossa yhden ryhmän jäsenet siirtävät samaa laatikkoa.
+#### Editori
+Melko helpolla lisäpanostuksella voidaan laatia pelialueiden suunnitteluun tarkoitettu editori
+#### Monimutkaisempaa dynamiikkaa pelialueille
+Pelialueet saattavat jatkossa sisältää 
+- toiminnaltaan monimutkaisempia esteitä (esim. liikuvat esteet)
+- pelaamista helpottavia tekijöitä (esim. liukuhihnoja)
+#### Verkkopeli
+Kahden tai useamman pelaajan peliä voi pelata myös verkon yli
