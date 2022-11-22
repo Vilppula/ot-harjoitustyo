@@ -22,16 +22,16 @@
             <Font name="Calisto MT" size="26.0" />
          </font>
       </Label>
-      <TextField maxWidth="300.0" prefHeight="30.0" prefWidth="300.0" />
+      <TextField fx:id="username" maxWidth="300.0" prefHeight="30.0" prefWidth="300.0" />
       <Label layoutX="225.0" layoutY="99.0" text="Salasana">
          <font>
             <Font name="Calisto MT" size="26.0" />
          </font>
       </Label>
-      <TextField maxWidth="300.0" prefHeight="30.0" prefWidth="300.0" />
+      <TextField fx:id="password" maxWidth="300.0" prefHeight="30.0" prefWidth="300.0" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
-            <Button mnemonicParsing="false" text="Luo uusi">
+            <Button fx:id="createNew" mnemonicParsing="false" onAction="#addNewPlayer" text="Luo uusi">
                <font>
                   <Font size="22.0" />
                </font>

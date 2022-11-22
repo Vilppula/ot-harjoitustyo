@@ -1,4 +1,4 @@
-package laatikkopeli;
+package laatikkopeli.gui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

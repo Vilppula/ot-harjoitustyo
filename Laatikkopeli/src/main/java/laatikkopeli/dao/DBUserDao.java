@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package laatikkopeli;
+package laatikkopeli.dao;
 
 /**
  *
  * @author lasse
  */
-class Vbox {
+public class DBUserDao {
     
 }

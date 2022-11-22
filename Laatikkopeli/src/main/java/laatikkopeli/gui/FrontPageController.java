@@ -1,4 +1,4 @@
-package laatikkopeli;
+package laatikkopeli.gui;
 
 import java.io.IOException;
 import java.net.URL;
@@ -12,10 +12,10 @@ import javafx.scene.layout.VBox;
 
 public class FrontPageController implements Initializable {
 
-    @FXML HBox buttonBar;
-    @FXML Pane mainArea;
-    @FXML VBox signupView;
-    @FXML SplitPane onePlayerView;
+    @FXML HBox buttonBar;   //Below main title: 3 buttons
+    @FXML Pane mainArea;    //Main view. Changes by pressing buttons on "buttonbar"
+    @FXML VBox signupView;  //This view will be opened inside main view for new player
+    @FXML SplitPane onePlayerView;  //1P view to be set visible inside main view
     
     
     @FXML
@@ -44,6 +44,4 @@ public class FrontPageController implements Initializable {
         this.signupView.setVisible(false);
         this.onePlayerView.setVisible(false);
     }
-
-    
 }
