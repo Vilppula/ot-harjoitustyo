@@ -1,5 +1,6 @@
 package laatikkopeli.gui;
 
+import laatikkopeli.SignupController;
 import javafx.fxml.FXMLLoader;
 import static org.junit.Assert.*;
 import org.junit.Before;

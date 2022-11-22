@@ -1,4 +1,4 @@
-package laatikkopeli.gui;
+package laatikkopeli;
 
 import java.io.IOException;
 import java.net.URL;
