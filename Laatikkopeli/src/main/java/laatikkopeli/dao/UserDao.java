@@ -4,6 +4,9 @@ import laatikkopeli.domain.User;
 
 public interface UserDao {
     
-    User create(User user) throws Exception;
+    boolean saveUser(User user) throws Exception;
     
+    User findUser(User user);
+    
+    void findAll();
 }

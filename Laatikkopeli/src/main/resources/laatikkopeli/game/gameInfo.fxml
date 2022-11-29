@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="100.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laatikkopeli.GameInfoController">
+    <children>
+        <Label text="Playing:" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+           <font>
+              <Font name="Copperplate Gothic Light" size="29.0" />
+           </font>
+        </Label>
+        <Label fx:id="player" alignment="TOP_LEFT" contentDisplay="TOP" text="*get name*" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="10.0">
+           <font>
+              <Font name="Corbel" size="23.0" />
+           </font>
+        </Label>
+        <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="253.0" layoutY="18.0" text="00:00" AnchorPane.topAnchor="10.0">
+           <font>
+              <Font name="Forte" size="38.0" />
+           </font>
+        </Label>
+        <Label alignment="TOP_RIGHT" contentDisplay="CENTER" layoutX="503.0" layoutY="5.0" text="Moves:" textAlignment="RIGHT" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+           <font>
+              <Font name="Copperplate Gothic Light" size="25.0" />
+           </font>
+        </Label>
+        <Label fx:id="moves" layoutX="511.0" text="*get moves*" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="10.0">
+           <font>
+              <Font name="Corbel" size="22.0" />
+           </font>
+        </Label>
+     </children>
+</AnchorPane>

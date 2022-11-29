@@ -3,12 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -19,39 +14,41 @@
          <font>
             <Font name="Bodoni MT Black" size="47.0" />
          </font></Label>
-      <HBox fx:id="buttonBar" alignment="TOP_CENTER" prefHeight="80.0" prefWidth="200.0" spacing="20.0">
+      <StackPane prefHeight="150.0" prefWidth="200.0">
          <children>
-            <Button fx:id="aloitaYksinpeli" minHeight="50.0" mnemonicParsing="false" text="Aloita yksinpeli" />
-            <Button fx:id="createPlayer" minHeight="50.0" onAction="#openSignup" text="Uusi pelaaja" />
-            <Button fx:id="aloitaKaksinpeli" layoutX="1.0" minHeight="50.0" mnemonicParsing="false" text="Aloita kaksinpeli" />
+            <HBox fx:id="signButtons" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Button fx:id="loginButton" minHeight="50.0" onAction="#openLoginView" text="Kirjaudu" />
+                  <Button fx:id="signUpButton" layoutX="10.0" layoutY="10.0" minHeight="50.0" onAction="#openSignupView" text="Uusi pelaaja" />
+               </children>
+               <StackPane.margin>
+                  <Insets top="-2.0" />
+               </StackPane.margin>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox fx:id="playButtons" alignment="CENTER" prefHeight="80.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Label fx:id="player1Name" text="*show name*">
+                     <font>
+                        <Font name="Bodoni MT" size="22.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="startOnePlayer" minHeight="50.0" mnemonicParsing="false" onAction="#openSinglePlayer" text="Aloita yksinpeli" />
+                  <Button fx:id="startTwoPlayer" layoutX="1.0" minHeight="50.0" mnemonicParsing="false" text="Aloita kaksinpeli" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </HBox>
          </children>
-         <padding>
-            <Insets bottom="10.0" top="10.0" />
-         </padding>
-      </HBox>
-      <StackPane fx:id="mainArea" prefHeight="600.0" prefWidth="780.0">
+      </StackPane>
+      <StackPane fx:id="mainArea" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="780.0">
          <children>
-            <SplitPane fx:id="onePlayerView" dividerPositions="0.3" prefHeight="600.0" prefWidth="780.0">
-              <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="580.0" prefWidth="240.0" />
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="580.0" prefWidth="100.0">
-                     <children>
-                        <GridPane>
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="30.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="30.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                        </GridPane>
-                     </children>
-                  </AnchorPane>
-              </items>
-            </SplitPane>
             <fx:include fx:id="signupView" source="signup.fxml" />
+            <fx:include fx:id="singlePlayerView" source="singlePlayerView.fxml" />
+            <fx:include fx:id="loginView" source="login.fxml" />
          </children>
       </StackPane>
    </children>

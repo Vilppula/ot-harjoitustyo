@@ -3,8 +3,8 @@ package laatikkopeli.domain;
 
 import java.util.Objects;
 
-//Class describing user-object.
-public class User {
+//This class is describing user-object.
+public class User extends DBobject{
     
     private String username;
     private String password;
@@ -12,6 +12,10 @@ public class User {
     public User(String username, String password){
         this.password = password;
         this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getUsername() {
@@ -47,7 +51,4 @@ public class User {
         }
         return true;
     }
-    
-    
-    
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.SplitPane?>
+
+<SplitPane fx:id="main" dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laatikkopeli.SinglePlayerViewController">
+  <items>
+    <fx:include fx:id="gameInfo" maxHeight="100.0" source="game/gameInfo.fxml" />
+    <fx:include fx:id="gamegrid" source="game/gamegrid.fxml" />
+  </items>
+</SplitPane>

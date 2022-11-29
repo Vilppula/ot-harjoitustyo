@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="main" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laatikkopeli.SignupController">
+<VBox fx:id="signupMain" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laatikkopeli.SignupController">
     <children>
         <Label text="Luo uusi pelaaja">
          <font>
@@ -22,13 +22,19 @@
             <Font name="Calisto MT" size="26.0" />
          </font>
       </Label>
-      <TextField fx:id="username" maxWidth="300.0" prefHeight="30.0" prefWidth="300.0" />
+      <TextField fx:id="username" alignment="TOP_CENTER" maxWidth="300.0" prefHeight="30.0" prefWidth="300.0">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
       <Label layoutX="225.0" layoutY="99.0" text="Salasana">
          <font>
             <Font name="Calisto MT" size="26.0" />
          </font>
       </Label>
-      <TextField fx:id="password" maxWidth="300.0" prefHeight="30.0" prefWidth="300.0" />
+      <TextField fx:id="password" alignment="TOP_CENTER" maxWidth="300.0" prefHeight="30.0" prefWidth="300.0">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
             <Button fx:id="createNew" mnemonicParsing="false" onAction="#addNewPlayer" text="Luo uusi">
@@ -36,13 +42,18 @@
                   <Font size="22.0" />
                </font>
             </Button>
-              <Button fx:id="returnToFrontpage" onAction="#closeSignup" prefHeight="40.0" prefWidth="40.0" text="X">
+              <Button fx:id="returnToFrontpage" onAction="#closeSignupView" prefHeight="40.0" prefWidth="40.0" text="X">
                <font>
                   <Font size="22.0" />
                </font>
             </Button>
          </children>
       </HBox>
+      <Label fx:id="infoText" alignment="CENTER" contentDisplay="CENTER" prefWidth="600.0" text="*info*">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Label>
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
