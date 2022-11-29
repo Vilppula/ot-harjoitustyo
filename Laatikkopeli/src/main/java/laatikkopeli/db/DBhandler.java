@@ -1,5 +1,8 @@
 package laatikkopeli.db;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -17,6 +20,7 @@ import laatikkopeli.domain.User;
 
 public class DBhandler {                    //Sqlite database utility class
     
+    private String DBname;
     private QueryBuilder queryBuilder;
     private Connection connection;
     private String query;
@@ -26,9 +30,10 @@ public class DBhandler {                    //Sqlite database utility class
     
     // Constructor
     public DBhandler(String DBname){        //DB connection upon creation of instance
+        this.DBname=DBname;
         this.queryBuilder = new QueryBuilder(this.usersTable,this.scoresTable);
         try {
-            this.connection = DriverManager.getConnection("jdbc:sqlite:"+DBname+".db");
+            this.connection = DriverManager.getConnection("jdbc:sqlite:"+this.DBname+".db");
             initDBTables();
         } catch (SQLException ex) {
             Logger.getLogger(DBhandler.class.getName()).log(Level.SEVERE, null, ex);
@@ -62,7 +67,7 @@ public class DBhandler {                    //Sqlite database utility class
         return results;    
     }
     //========================================================================== Check that correct tables can be found from database
-    private boolean initDBTables() {
+    public boolean initDBTables() {
         try {
             //If correct tables are not present the they will be created
             Statement statement = this.connection.createStatement();
@@ -120,4 +125,13 @@ public class DBhandler {                    //Sqlite database utility class
         }
         return false;
     }
+    
+    //========================================================================== Clear database
+    public boolean clearDB() throws SQLException {
+        this.connection.close();
+        File dbFile = new File(this.DBname+".db");
+        dbFile.delete();
+        return true;
+    }
+
 }
