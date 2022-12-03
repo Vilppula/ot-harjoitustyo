@@ -7,9 +7,9 @@ Luomalla pelaajaprofiili pelaajien on mahdollista tallettaa omia pelisuorituksia
 Käyttäjällä on jokin käyttäjänimi ja sitä vastaava salasana. Tämä voidaan toteuttaa hyvin kevyenä ratkaisuna, sillä käyttätileihin ei liity mitään
 arkaluontoista tietoa.
 ### Kirjautuminen uutena käyttäjänä
-- Käyttäjän tulee keksiä jokin pelaajanimi sekä sitä vastaava salasana.
-- Käyttäjällä voi olla profiilikuva
-- Uusi käyttäjä lisätään paikalliseen tietokantaan.
+- Käyttäjän tulee keksiä jokin pelaajanimi sekä sitä vastaava salasana. TEHTY
+- Käyttäjällä voi olla profiilikuva 
+- Uusi käyttäjä lisätään paikalliseen tietokantaan. TEHTY
 ### Kirjautumisen jälkeen
 - Pääsy pelitiloihin
 - Käyttäjäkohtaiset pelitulokset tallennetaan tietokantaan. Paras pelialuekohtainen tulos jää voimaan.
@@ -30,16 +30,16 @@ kilpailijan etenemistä. Muuttuvina tekijöinä pelialueella ovat erilaiset siir
 ## Käyttöliittymän määrittely
 ### Alkunäkymä
 - Alkunäkymä sisältää jonkin peliä esittelevän kuvan.
-- Sisäänkirjautumislomake
-- Linkki uuden pelaajan luomiseen
-- Kirjautuneen pelaajan tiedot (kahden pelaajan tapauksessa näitä on kaksi)
-- Linkit pelitiloihin (kun kirjautuminen on suoritettu)
+- Sisäänkirjautumislomake TEHTY
+- Linkki uuden pelaajan luomiseen TEHTY
+- Kirjautuneen pelaajan tiedot (kahden pelaajan tapauksessa näitä on kaksi) TEHTY
+- Linkit pelitiloihin (kun kirjautuminen on suoritettu) TEHTY
 - Linkki parhaita pelituloksia esittelevään näkymään.
 ### Kirjautumisnäkymä
-- Nimikenttä ja salasanakenttä
-- Pelaajan profiilikuvan lisäys
+- Nimikenttä ja salasanakenttä TEHTY
+- Pelaajan profiilikuvan lisäys TEHTY
 ### Pelitilat
-- Yhden pelaajan pelinäkymä
+- Yhden pelaajan pelinäkymä TEHTY
 - Kahden pelaajan pelinäkymä
 ### Parhaiden pelituloksien näkymä
 - Listamuotoinen näkymä, jossa esitellään pelialuekohtaisesti parhaan tuloksen saanut pelaaja.
