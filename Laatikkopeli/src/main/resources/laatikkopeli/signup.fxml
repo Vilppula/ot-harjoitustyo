@@ -3,12 +3,13 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="signupMain" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laatikkopeli.SignupController">
+<VBox fx:id="signupMain" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="780.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laatikkopeli.controllers.SignupController">
     <children>
         <Label text="Luo uusi pelaaja">
          <font>
@@ -31,10 +32,11 @@
             <Font name="Calisto MT" size="26.0" />
          </font>
       </Label>
-      <TextField fx:id="password" alignment="TOP_CENTER" maxWidth="300.0" prefHeight="30.0" prefWidth="300.0">
+      <PasswordField fx:id="password" alignment="TOP_CENTER" maxWidth="300.0" prefHeight="30.0" prefWidth="300.0">
          <font>
             <Font size="18.0" />
-         </font></TextField>
+         </font>
+      </PasswordField>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
             <Button fx:id="createNew" mnemonicParsing="false" onAction="#addNewPlayer" text="Luo uusi">
@@ -49,7 +51,7 @@
             </Button>
          </children>
       </HBox>
-      <Label fx:id="infoText" alignment="CENTER" contentDisplay="CENTER" prefWidth="600.0" text="*info*">
+      <Label fx:id="infoText" alignment="CENTER" contentDisplay="CENTER" prefWidth="780.0" text="*info*">
          <font>
             <Font size="38.0" />
          </font>

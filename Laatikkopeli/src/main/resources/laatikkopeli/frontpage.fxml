@@ -3,52 +3,75 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laatikkopeli.FrontPageController">
+<VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="800.0" spacing="20.0" style="-fx-background-color: DARKGREY;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laatikkopeli.controllers.FrontPageController">
    <children>
       <Label fx:id="mainTitle" alignment="CENTER" prefWidth="600.0" text="Laatikkopeli" textAlignment="CENTER">
          <font>
             <Font name="Bodoni MT Black" size="47.0" />
          </font></Label>
-      <StackPane prefHeight="150.0" prefWidth="200.0">
+      <AnchorPane fx:id="topButtons" minWidth="800.0" prefHeight="120.0" prefWidth="800.0">
          <children>
-            <HBox fx:id="signButtons" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+            <VBox fx:id="showPlayer1" layoutX="14.0" maxHeight="80.0" prefHeight="47.0" prefWidth="220.0">
                <children>
-                  <Button fx:id="loginButton" minHeight="50.0" onAction="#openLoginView" text="Kirjaudu" />
-                  <Button fx:id="signUpButton" layoutX="10.0" layoutY="10.0" minHeight="50.0" onAction="#openSignupView" text="Uusi pelaaja" />
-               </children>
-               <StackPane.margin>
-                  <Insets top="-2.0" />
-               </StackPane.margin>
-               <padding>
-                  <Insets bottom="10.0" top="10.0" />
-               </padding>
-            </HBox>
-            <HBox fx:id="playButtons" alignment="CENTER" prefHeight="80.0" prefWidth="200.0" spacing="20.0">
-               <children>
-                  <Label fx:id="player1Name" text="*show name*">
+                  <Label text="Pelaaja1:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="player1Name" prefHeight="27.0" prefWidth="151.0">
                      <font>
                         <Font name="Bodoni MT" size="22.0" />
                      </font>
                   </Label>
-                  <Button fx:id="startOnePlayer" minHeight="50.0" mnemonicParsing="false" onAction="#openSinglePlayer" text="Aloita yksinpeli" />
-                  <Button fx:id="startTwoPlayer" layoutX="1.0" minHeight="50.0" mnemonicParsing="false" text="Aloita kaksinpeli" />
+                  <StackPane fx:id="p1Buttons" alignment="TOP_LEFT" prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="loginP1" alignment="CENTER" minHeight="23.0" mnemonicParsing="false" onAction="#openLoginView" prefHeight="23.0" prefWidth="85.0" text="Kirjaudu" />
+                        <Button fx:id="logoutP1" alignment="CENTER" layoutX="10.0" layoutY="10.0" minHeight="23.0" mnemonicParsing="false" onAction="#logoutP1" prefHeight="23.0" prefWidth="85.0" text="Kirjaudu ulos" />
+                     </children>
+                  </StackPane>
+               </children>
+            </VBox>
+            <HBox fx:id="centerButtons" alignment="TOP_CENTER" layoutX="225.0" prefHeight="80.0" prefWidth="340.0" spacing="20.0">
+               <children>
+                  <Button fx:id="play1Button" disable="true" minHeight="50.0" mnemonicParsing="false" onAction="#openSinglePlayerView" text="YKSINPELI" />
+                  <Button fx:id="signUpButton" layoutX="10.0" layoutY="10.0" minHeight="50.0" onAction="#openSignupView" text="UUSI PELAAJA" />
+                  <Button fx:id="play2Button" disable="true" minHeight="50.0" mnemonicParsing="false" onAction="#openTwoPlayerView" text="KAKSINPELI" />
                </children>
                <padding>
                   <Insets bottom="10.0" top="10.0" />
                </padding>
             </HBox>
+            <VBox fx:id="showPlayer2" alignment="TOP_RIGHT" layoutX="566.0" maxHeight="80.0" prefHeight="47.0" prefWidth="220.0">
+               <children>
+                  <Label text="Pelaaja2:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="player2Name" alignment="TOP_RIGHT" contentDisplay="RIGHT" prefHeight="27.0" prefWidth="151.0" textAlignment="RIGHT">
+                     <font>
+                        <Font name="Bodoni MT" size="22.0" />
+                     </font>
+                  </Label>
+                  <StackPane fx:id="p2Buttons" alignment="TOP_RIGHT" prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="loginP2" alignment="CENTER" contentDisplay="CENTER" minHeight="23.0" mnemonicParsing="false" onAction="#openLoginView" prefHeight="23.0" prefWidth="85.0" text="Kirjaudu" textAlignment="CENTER" />
+                        <Button fx:id="logoutP2" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="78.0" layoutY="10.0" minHeight="23.0" mnemonicParsing="false" onAction="#logoutP2" prefHeight="23.0" prefWidth="85.0" text="Kirjaudu ulos" />
+                     </children>
+                  </StackPane>
+               </children>
+            </VBox>
          </children>
-      </StackPane>
+      </AnchorPane>
       <StackPane fx:id="mainArea" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="780.0">
          <children>
-            <fx:include fx:id="signupView" source="signup.fxml" />
-            <fx:include fx:id="singlePlayerView" source="singlePlayerView.fxml" />
-            <fx:include fx:id="loginView" source="login.fxml" />
+            
          </children>
       </StackPane>
    </children>

@@ -28,7 +28,6 @@ public class DBhandlerTest {
     }
     
    
-   
     @After
     public void endTesting() throws SQLException {
         this.dbhandler.clearDB();

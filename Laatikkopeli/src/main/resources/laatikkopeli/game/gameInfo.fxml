@@ -1,35 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="100.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laatikkopeli.GameInfoController">
+<AnchorPane fx:id="gameInfo" maxWidth="180.0" prefHeight="600.0" prefWidth="180.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laatikkopeli.controllers.GameInfoController">
     <children>
-        <Label text="Playing:" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
-           <font>
-              <Font name="Copperplate Gothic Light" size="29.0" />
-           </font>
-        </Label>
-        <Label fx:id="player" alignment="TOP_LEFT" contentDisplay="TOP" text="*get name*" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="10.0">
-           <font>
-              <Font name="Corbel" size="23.0" />
-           </font>
-        </Label>
-        <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="253.0" layoutY="18.0" text="00:00" AnchorPane.topAnchor="10.0">
-           <font>
-              <Font name="Forte" size="38.0" />
-           </font>
-        </Label>
-        <Label alignment="TOP_RIGHT" contentDisplay="CENTER" layoutX="503.0" layoutY="5.0" text="Moves:" textAlignment="RIGHT" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-           <font>
-              <Font name="Copperplate Gothic Light" size="25.0" />
-           </font>
-        </Label>
-        <Label fx:id="moves" layoutX="511.0" text="*get moves*" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="10.0">
-           <font>
-              <Font name="Corbel" size="22.0" />
-           </font>
-        </Label>
+      <SplitPane dividerPositions="0.8" orientation="VERTICAL" prefHeight="600.0" prefWidth="180.0" style="-fx-background-color: #E0E0E0;">
+        <items>
+          <AnchorPane fx:id="playerPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <VBox fx:id="playerInfoVbox" alignment="TOP_CENTER" prefHeight="475.0" prefWidth="178.0" spacing="10.0" style="-fx-background-color: #202020;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <VBox fx:id="player1Info" prefHeight="210.0" prefWidth="179.0">
+                           <children>
+                              <VBox fx:id="player1NameInfo" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                      <Label text="Pelaaja 1:" textAlignment="CENTER" textFill="#b58435" textOverrun="WORD_ELLIPSIS">
+                                         <font>
+                                            <Font name="Copperplate Gothic Light" size="18.0" />
+                                         </font>
+                                      </Label>
+                                      <Label fx:id="player1Name" alignment="TOP_LEFT" contentDisplay="TOP" text="*get name*" textFill="#f5cece">
+                                         <font>
+                                            <Font name="Corbel" size="23.0" />
+                                         </font>
+                                      </Label>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="player1GameInfo" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                      <Label alignment="TOP_RIGHT" contentDisplay="CENTER" text="Moves:" textAlignment="RIGHT">
+                                         <font>
+                                            <Font name="Copperplate Gothic Light" size="25.0" />
+                                         </font>
+                                      </Label>
+                                      <Label fx:id="player1Moves" text="*get moves*">
+                                         <font>
+                                            <Font name="Corbel" size="22.0" />
+                                         </font>
+                                      </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="player2Info" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="210.0" prefWidth="179.0">
+                           <children>
+                              <VBox fx:id="player2NameInfo" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Pelaaja 2:" textAlignment="CENTER" textFill="#7aab46" textOverrun="WORD_ELLIPSIS">
+                                       <font>
+                                          <Font name="Copperplate Gothic Light" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="player2Name" alignment="TOP_LEFT" contentDisplay="TOP" text="*get name*" textFill="#f9ffb7">
+                                       <font>
+                                          <Font name="Corbel" size="23.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="player2GameInfo" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label alignment="TOP_RIGHT" contentDisplay="CENTER" text="Moves:" textAlignment="RIGHT">
+                                       <font>
+                                          <Font name="Copperplate Gothic Light" size="25.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="player2Moves" text="*get moves*">
+                                       <font>
+                                          <Font name="Corbel" size="22.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <HBox fx:id="playerInfoButtons" alignment="CENTER" prefHeight="40.0" prefWidth="179.0" spacing="7.0">
+                           <children>
+                              <Button fx:id="closeGame" mnemonicParsing="false" onAction="#closeGame" text="LOPETA">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="closeGame1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#restartGame" text="ALUSTA">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane fx:id="timerPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #202020;">
+               <children>
+                    <Label fx:id="timerLabel" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="43.0" layoutY="38.0" text="00:00" textFill="#b29797">
+                       <font>
+                          <Font name="Forte" size="38.0" />
+                       </font>
+                    </Label>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
      </children>
 </AnchorPane>

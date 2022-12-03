@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.stage.WindowEvent;
 
 
 public class App extends Application {
@@ -15,6 +18,13 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent e) {
+               Platform.exit();
+               System.exit(0);
+            }
+        });
         scene = new Scene(loadFXML("frontpage"), 800, 800);
         stage.setScene(scene);
         stage.show();

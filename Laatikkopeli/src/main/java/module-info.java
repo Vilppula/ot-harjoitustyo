@@ -5,5 +5,7 @@ module laatikkopeli {
     requires java.base;
 
     opens laatikkopeli to javafx.fxml;
+    opens laatikkopeli.controllers to javafx.fxml;
     exports laatikkopeli;
+    exports laatikkopeli.controllers;
 }

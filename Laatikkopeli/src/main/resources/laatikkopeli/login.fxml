@@ -5,25 +5,49 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="laatikkopeli.LoginController">
+<AnchorPane fx:id="loginMain" prefHeight="600.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laatikkopeli.controllers.LoginController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="65.0" text="Kirjaudu" textAlignment="JUSTIFY" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
          <font>
-            <Font name="Copperplate Gothic Bold" size="25.0" />
+            <Font name="Copperplate Gothic Bold" size="27.0" />
          </font>
       </Label>
-      <VBox alignment="TOP_CENTER" layoutX="157.0" layoutY="131.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
+      <VBox alignment="TOP_CENTER" layoutX="157.0" layoutY="131.0" prefHeight="250.0" prefWidth="100.0" spacing="15.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
          <children>
-            <Label text="Pelaajanimi" />
-            <TextField fx:id="playerName" alignment="CENTER" />
-            <Label layoutX="10.0" layoutY="10.0" text="Salasana" />
+            <Label text="Pelaajanimi">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <TextField fx:id="username" alignment="CENTER" />
+            <Label layoutX="10.0" layoutY="10.0" text="Salasana">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
             <PasswordField fx:id="password" alignment="CENTER" />
-            <Button fx:id="logn" alignment="TOP_CENTER" mnemonicParsing="false" text="Sisään" translateY="20.0" />
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Button fx:id="logn" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#loginAsPlayer" text="Sisään">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="closeView" mnemonicParsing="false" onAction="#closeLoginView" text="X">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </VBox>
+      <Label fx:id="infoText" alignment="CENTER" contentDisplay="CENTER" layoutY="400.0" prefWidth="780.0" text="*INFO*" textAlignment="CENTER">
+         <font>
+            <Font name="Bodoni MT" size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

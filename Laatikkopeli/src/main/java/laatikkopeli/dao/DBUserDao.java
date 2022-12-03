@@ -10,11 +10,11 @@ import laatikkopeli.domain.User;
 public class DBUserDao implements UserDao {
 
     private final DBhandler dbhandler;
-    private List<User> users;                       //Runtime users-list
+    private List<User> users;                               //Runtime users-list working as cache
 
     public DBUserDao(DBhandler dbhandler) {
         this.dbhandler = dbhandler;
-        this.findAll();
+        this.findAll();                                     
     }
 
     @Override
@@ -27,12 +27,14 @@ public class DBUserDao implements UserDao {
     }
 
     @Override
-    public User findUser(User user) {
-        return this.users.get(this.users.indexOf(user));
+    public User findUser(User user) {                                           //Checks if user is in cache
+        System.out.println("Kysely: pelaaja "+user.getUsername()+": "+this.users.contains(user));
+        if (this.users.contains(user)) return this.users.get(this.users.indexOf(user));
+        return null;
     }
 
     @Override
-    public void findAll() {
+    public void findAll() {                                                     //Load users to cache
         ResultSet results = this.dbhandler.getAll("users");
         if (results == null) System.out.println("TYHJÄÄ TÄYNNÄ");
         List<User> userlist = new ArrayList<>();
