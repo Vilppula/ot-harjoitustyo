@@ -9,4 +9,5 @@
 | 26.11 |3h| Tietokannan määrittelyä |
 | 28.11 |3h| Tietokannan määrittelyä |
 | 29.11 |6h| Lisäykset käyttöliittymään, tietokannan yhdistäminen |
-
+| 1.12 |6h| Käyttöliittymän parantelua. Käyttäjien lisääminen tietokantaan toimii |
+| 2.12 |7h| Käyttöliittymän parantelua. Pelitilan luominen etenee |
