@@ -19,13 +19,20 @@ public class TimerHandler extends TimerTask {
         Platform.runLater(() -> {
             this.seconds++;
             if (this.seconds > 59) {
-                this.seconds = 0; this.minutes++;
+                this.seconds = 0; 
+                this.minutes++;
             }
             String time;
-            if (this.minutes < 10) time = "0"+this.minutes+":";
-            else time = ""+this.minutes+":";
-            if (this.seconds < 10) time += "0"+this.seconds;
-            else time += this.seconds;
+            if (this.minutes < 10) {
+                time = "0" + this.minutes + ":";
+            } else {
+                time = "" + this.minutes + ":";
+            }
+            if (this.seconds < 10) {
+                time += "0" + this.seconds;
+            } else {
+                time += this.seconds;
+            }
             this.timer.setText(time);
         });
     }

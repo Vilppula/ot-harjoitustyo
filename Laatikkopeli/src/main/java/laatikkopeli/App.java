@@ -21,8 +21,8 @@ public class App extends Application {
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent e) {
-               Platform.exit();
-               System.exit(0);
+                Platform.exit();
+                System.exit(0);
             }
         });
         scene = new Scene(loadFXML("frontpage"), 800, 800);

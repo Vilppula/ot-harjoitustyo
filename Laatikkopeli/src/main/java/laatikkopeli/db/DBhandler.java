@@ -18,20 +18,34 @@ import laatikkopeli.domain.User;
 
 public class DBhandler {                    //Sqlite database utility class
     
-    private String DBname;
+    private String dbName;
     private QueryBuilder queryBuilder;
     private Connection connection;
     private String query;
     private String usersTable = "users";
     private String scoresTable = "scores";
     
+    List<String> userFields = new ArrayList<>(Arrays.asList(
+                    "users",
+                    "username", "varchar(50)",
+                    "password", "varchar(50)",
+                    "avURL", "varchar(200)"
+            ));
+    List<String> scoreFields = new ArrayList<>(Arrays.asList(
+                    "scores",
+                    "username", "varchar(50)",
+                    "modeType", "varchar(50)",
+                    "levelID", "integer",
+                    "datetime", "varchar(50)",
+                    "points", "integer"
+            ));
     
     // Constructor
-    public DBhandler(String DBname){        //DB connection upon creation of instance
-        this.DBname=DBname;
-        this.queryBuilder = new QueryBuilder(this.usersTable,this.scoresTable);
+    public DBhandler(String dbName) {        //DB connection upon creation of instance
+        this.dbName = dbName;
+        this.queryBuilder = new QueryBuilder(this.usersTable, this.scoresTable);
         try {
-            this.connection = DriverManager.getConnection("jdbc:sqlite:"+this.DBname+".db");
+            this.connection = DriverManager.getConnection("jdbc:sqlite:" + this.dbName + ".db");
             initDBTables();
         } catch (SQLException ex) {
             Logger.getLogger(DBhandler.class.getName()).log(Level.SEVERE, null, ex);
@@ -40,28 +54,31 @@ public class DBhandler {                    //Sqlite database utility class
     
     //========================================================================== Insert new record to database
     public boolean newRecord(DBobject dbo) {                                    
-        if (dbo.getClass() == User.class)
+        if (dbo.getClass() == User.class) {
             this.query = this.queryBuilder.newInsertQuery((User) dbo);
-        else if (dbo.getClass() == Score.class)
+        } else if (dbo.getClass() == Score.class) {
             this.query = this.queryBuilder.newInsertQuery((Score) dbo);
+        }
         return insert();
     }
 
     //========================================================================== Get single record, return as DBobject
-    
     public DBobject getRecord(String username) throws SQLException {            //Get user-type record
         this.query = this.queryBuilder.newSelectUserQuery(username);
         ResultSet results = select();
-        if (results == null) return null;
+        if (results == null) {
+            return null;
+        }
         return new User(results.getString(1), results.getString(2), results.getString(3));
     }
     
     //========================================================================== Get multiple records, return as List<DBobject>
-    
     public List<Score> getRecords(int levelId) throws SQLException {         //Get scores by levelId
         this.query = this.queryBuilder.newSelectScoreQuery(levelId);
         ResultSet results = select();
-        if (results == null) return null;
+        if (results == null) {
+            return null;
+        }
         List<Score> scores = new ArrayList<>();
         while (results.next()) {
             scores.add(new Score(results.getString(1), results.getString(2), results.getInt(3), 
@@ -72,10 +89,11 @@ public class DBhandler {                    //Sqlite database utility class
     
     //========================================================================== Get all records by tablename, return as list of DBobjects
     public ResultSet getAll(String tablename) {                                 
-        if (tablename.equals(this.usersTable))
+        if (tablename.equals(userFields.get(0))) {
             this.query = this.queryBuilder.newSelectUserQuery();
-        else if (tablename.equals(this.scoresTable))
+        } else if (tablename.equals(scoreFields.get(0))) {
             this.query = this.queryBuilder.newSelectScoreQuery();
+        }
         ResultSet results = select();
         return results;    
     }
@@ -84,25 +102,13 @@ public class DBhandler {                    //Sqlite database utility class
         try {
             //If correct tables are not present the they will be created
             Statement statement = this.connection.createStatement();
-            List<String> tablelist = new ArrayList<>(Arrays.asList(
-                    "users",
-                    "username","varchar(50)",
-                    "password","varchar(50)",
-                    "avURL","varchar(200)"
-            ));
-            this.query = this.queryBuilder.newCreateTableQuery(tablelist);
-            System.out.println("KYSELY: "+this.query);
+            
+            this.query = this.queryBuilder.newCreateTableQuery(userFields);
+            printQuery();
             statement.execute(query);
-            tablelist = new ArrayList<>(Arrays.asList(
-                    "scores",
-                    "username","varchar(50)",
-                    "modeType","varchar(50)",
-                    "levelID","integer",
-                    "datetime","varchar(50)",
-                    "points","integer"
-            ));
-            this.query = this.queryBuilder.newCreateTableQuery(tablelist);
-            System.out.println("KYSELY: "+this.query);
+            
+            this.query = this.queryBuilder.newCreateTableQuery(scoreFields);
+            printQuery();
             statement.execute(query);
         } catch (SQLException ex) {
             Logger.getLogger(DBhandler.class.getName()).log(Level.SEVERE, null, ex);
@@ -111,7 +117,7 @@ public class DBhandler {                    //Sqlite database utility class
     }
     //========================================================================== Execute insert and notify
     private boolean insert() {                       
-        System.out.println("KYSELY: "+this.query);
+        printQuery();
         Statement statement;
         try {
             statement = this.connection.createStatement();
@@ -124,8 +130,9 @@ public class DBhandler {                    //Sqlite database utility class
     }
     //========================================================================== Execute select and return resultSet
     private ResultSet select() {         
-        System.out.println("KYSELY: "+this.query);
-        Statement statement; ResultSet results;
+        printQuery();
+        Statement statement;
+        ResultSet results;
         try {
             statement = this.connection.createStatement();
             results = statement.executeQuery(this.query);
@@ -151,9 +158,13 @@ public class DBhandler {                    //Sqlite database utility class
     //========================================================================== Clear database (used to delete testDB)
     public boolean clearDB() throws SQLException {
         this.connection.close();
-        File dbFile = new File(this.DBname+".db");
+        File dbFile = new File(this.dbName + ".db");
         dbFile.delete();
         return true;
     }
-
+    
+    //========================================================================== Print query
+    public void printQuery() {
+        System.out.println("KYSELY: " + this.query);
+    }
 }

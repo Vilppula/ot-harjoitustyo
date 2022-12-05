@@ -4,13 +4,13 @@ package laatikkopeli.domain;
 import java.util.Objects;
 
 //This class is describing user-object.
-public class User extends DBobject{
+public class User extends DBobject {
     
     private String username;
     private String password;
     private String avatarURL;
     
-    public User(String username, String password, String avatarURL){
+    public User(String username, String password, String avatarURL) {
         this.password = password;
         this.username = username;
         this.avatarURL = avatarURL;

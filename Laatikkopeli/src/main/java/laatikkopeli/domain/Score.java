@@ -1,11 +1,8 @@
 package laatikkopeli.domain;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class Score extends DBobject{
+public class Score extends DBobject {
     
     private final String username;
     private final String modeType;

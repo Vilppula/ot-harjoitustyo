@@ -28,9 +28,9 @@ public class Tile { //Tile has knowledege only about homebox it resides in and t
     }
     
     public void updateTile() {                                                  //Set current layer image visible in homebox
-        if (this.actor == null)
+        if (this.actor == null) {
             this.homebox.setImage(bottom);
-        else {
+        } else {
             this.homebox.setImage(this.actor.getImage());              
         }   
     }
