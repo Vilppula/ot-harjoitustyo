@@ -12,3 +12,10 @@
  - Hahmotelma pelinäkymälle
 
 ### Viikko 5
+- Alkunäkymä sisältää kirjautumismahdollisuuden kahdelle pelaajalle
+- Pelaajille on asetettu oletusarvoinen profiilikuva
+- Yksin- tai kaksinpelipainikkeilla pääsee pelinäkymään
+- Pelinäkymä sisältää inforuudun sekä pelialueen
+- Inforuudussa näytetään kirjautuneen/kirjautuneiden pelaajien tiedot
+- Pelialueelle ladataan layout-instanssin määrittelemä pelinäkymä, joka koostuu erilaisista image-olioista
+- Pelaaja-oliota voi liikutella ja ne voivat työntää laatikko-olioita
