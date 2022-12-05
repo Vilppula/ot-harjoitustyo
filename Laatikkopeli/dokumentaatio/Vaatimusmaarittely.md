@@ -40,13 +40,13 @@ kilpailijan etenemistä. Muuttuvina tekijöinä pelialueella ovat erilaiset siir
 - Pelaajan profiilikuvan lisäys TEHTY
 ### Pelitilat
 - Yhden pelaajan pelinäkymä TEHTY
-- Kahden pelaajan pelinäkymä
+- Kahden pelaajan pelinäkymä TEHTY
 ### Parhaiden pelituloksien näkymä
 - Listamuotoinen näkymä, jossa esitellään pelialuekohtaisesti parhaan tuloksen saanut pelaaja.
   - Eri pelialueita voi selata.
 ### Pelinäkymä
-- Päivittyvä näkymä pelialueesta
-  - pelaaja/pelaajat
+- Päivittyvä näkymä pelialueesta TEHTY
+  - pelaaja/pelaajat TEHTY
   - laatikko/laatikot
   - kiinteät esteet ja muuttuvat tekijät.
   - laskurit
