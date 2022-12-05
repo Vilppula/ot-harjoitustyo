@@ -11,3 +11,5 @@
 | 29.11 |6h| Lisäykset käyttöliittymään, tietokannan yhdistäminen |
 | 1.12 |6h| Käyttöliittymän parantelua. Käyttäjien lisääminen tietokantaan toimii |
 | 2.12 |7h| Käyttöliittymän parantelua. Pelitilan luominen etenee |
+| 4.12 |7h| Käyttöliittymän, ominaisuuksien pareantelua. |
+| 5.12 |6h| Testien ja dokumentaation parantelua |
