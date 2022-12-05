@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -29,8 +31,8 @@ public class FrontPageController implements Initializable {
     @FXML Pane mainArea;                                                        //Main view. Changes by pressing buttons on "buttonbar"
 
     // Player related buttons and views
-    @FXML VBox showPlayer1;                                                     //Contains name of logged in player1 + login/logout buttons
-    @FXML VBox showPlayer2;                                                     //Contains name of logged in player2 + login/logout buttons
+    @FXML HBox showPlayer1;                                                     //Contains name of logged in player1 + login/logout buttons
+    @FXML HBox showPlayer2;                                                     //Contains name of logged in player2 + login/logout buttons
     @FXML StackPane p1Buttons;                                                  //Switch login/logout P1
     @FXML StackPane p2Buttons;                                                  //Switch login/logout P2
     @FXML Label player1Name;        
@@ -39,6 +41,9 @@ public class FrontPageController implements Initializable {
     @FXML Button logoutP1;
     @FXML Button loginP2;
     @FXML Button logoutP2;
+    @FXML ImageView player1Avatar;
+    @FXML ImageView player2Avatar;
+
     //Center buttons
     @FXML Button play1Button;
     @FXML Button signUpButton;
@@ -52,8 +57,8 @@ public class FrontPageController implements Initializable {
     //========================================================================== OPEN VIEWS
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        this.logoutP1.setVisible(false);
-        this.logoutP2.setVisible(false);
+        this.showPlayer1.setVisible(false);
+        this.showPlayer2.setVisible(false);
         this.loginP2.setDisable(true);
     }
     
@@ -104,7 +109,6 @@ public class FrontPageController implements Initializable {
     public void switchTopButtons() {
         this.topButtons.setDisable(!this.topButtons.isDisable());
     }
-    
     //========================================================================== LOGOUT METHODS
     public void logoutP1() {
         System.out.println("KIRJATAAN ULOS PELAAJA "+user1.getUsername());
@@ -117,9 +121,11 @@ public class FrontPageController implements Initializable {
         }
         else {
             this.user1 = null; this.loginP2.setDisable(true);
-            this.logoutP1.setVisible(false); this.loginP1.setVisible(true);
+            this.logoutP1.setVisible(false);
+            this.loginP1.setVisible(true);
             this.player1Name.setText("");
             this.play1Button.setDisable(true);
+            this.showPlayer1.setVisible(false);
         }
     }
     
@@ -127,7 +133,8 @@ public class FrontPageController implements Initializable {
         System.out.println("KIRJATAAN ULOS PELAAJA "+user2.getUsername());
         this.user2 = null;
         this.player2Name.setText("");
-        this.logoutP2.setVisible(false); this.loginP2.setVisible(true);
+        this.showPlayer2.setVisible(false);
+        this.loginP2.setVisible(true);
     }
 
     //========================================================================== SHARE RESOURCES TO NESTED CONTROLLERS
@@ -150,15 +157,19 @@ public class FrontPageController implements Initializable {
         if (this.user1 == null) {                                               //If user1 is not set go here
             this.user1 = user;
             this.player1Name.setText(this.user1.getUsername());
+            this.player1Avatar.setImage(new Image(user1.getAvatarURL()));
+            this.showPlayer1.setVisible(true);
+            this.loginP1.setVisible(false);
             this.play1Button.setDisable(false);
-            this.logoutP1.setVisible(true); this.loginP1.setVisible(false);
-            this.showPlayer2.setVisible(true);
             this.loginP2.setDisable(false);
+        
         } else {                                                                //Else set user2
             this.user2 = user;
             this.player2Name.setText(this.user2.getUsername());
+            this.player2Avatar.setImage(new Image(user2.getAvatarURL()));
+            this.showPlayer2.setVisible(true); 
+            this.loginP2.setVisible(false);
             this.play2Button.setDisable(false);
-            this.logoutP2.setVisible(true); this.loginP2.setVisible(false);
         }
     }
 }

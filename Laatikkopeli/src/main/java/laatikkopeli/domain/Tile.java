@@ -3,33 +3,35 @@ package laatikkopeli.domain;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class Tile {
 
-    private double x;
-    private double y;
-    private ImageView imageView;
+public class Tile { //Tile has knowledege only about homebox it resides in and the image content of itself
+
+    private Image bottom;            //Bottom layer image
+    private ImageView homebox;       //Imageview of this node
+    private Actor actor;             //Actor inside this tile
     
-    public Tile(double x, double y, Image image) {
-        this.x = x*20.0; this.y = y*20.0;
-        this.imageView = new ImageView(image);
-        this.imageView.setX(this.x);
+    
+    public Tile(Image bottom, ImageView homebox, Actor actor) {                 //Constructor to init tile with bottom layer image
+        this.homebox = homebox;
+        this.bottom = bottom;
+        this.actor = actor;
+        updateTile();
     }
 
-    public double getX() {
-        return x;
+    public void setActor(Actor actor) {
+        this.actor = actor;
+        updateTile();
     }
 
-    public double getY() {
-        return y;
+    public Actor getActor() {
+        return actor;
     }
-
-    public void setImageView(Image image) {
-        this.imageView.setImage(image);
+    
+    public void updateTile() {                                                  //Set current layer image visible in homebox
+        if (this.actor == null)
+            this.homebox.setImage(bottom);
+        else {
+            this.homebox.setImage(this.actor.getImage());              
+        }   
     }
-
-    public ImageView getImageView() {
-        return this.imageView;
-    }
-
-
 }

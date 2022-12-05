@@ -8,16 +8,19 @@ public class User extends DBobject{
     
     private String username;
     private String password;
+    private String avatarURL;
     
-    public User(String username, String password){
+    public User(String username, String password, String avatarURL){
         this.password = password;
         this.username = username;
+        this.avatarURL = avatarURL;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
+    public void setAvatarURL(String avatarURL) {
+        this.avatarURL = avatarURL;
+    }
+    
     public String getUsername() {
         return username;
     }
@@ -26,12 +29,8 @@ public class User extends DBobject{
         return password;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 59 * hash + Objects.hashCode(this.username);
-        hash = 59 * hash + Objects.hashCode(this.password);
-        return hash;
+    public String getAvatarURL() {
+        return avatarURL;
     }
 
     @Override

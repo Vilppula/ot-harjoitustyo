@@ -6,6 +6,7 @@ import java.util.Timer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import laatikkopeli.domain.TimerHandler;
 import laatikkopeli.domain.User;
@@ -15,14 +16,17 @@ public class GameInfoController implements Initializable {
 
     private User user1, user2;
     private GameViewController GVC;
+    private GamegridController GGC;
     private TimerHandler timerHandler;
     private Timer timer;
     
-    @FXML VBox player1Info;
+    @FXML VBox player1Info;                 //FXML elements
     @FXML VBox player2Info;
     @FXML Label player1Name;
     @FXML Label player2Name;
     @FXML Label timerLabel;
+    @FXML ImageView player1Avatar;
+    @FXML ImageView player2Avatar;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -40,8 +44,16 @@ public class GameInfoController implements Initializable {
     public void restartGame() {
         this.GVC.setUpGameView();
     }
+
+    public User getUser1() {
+        return user1;
+    }
+
+    public User getUser2() {
+        return user2;
+    }
     
-    public void setUpSinglePlayerInfoView(User user) {
+    public void setUpSinglePlayerInfoView(User user) {                          
         this.user1 = user;
         this.player1Name.setText(this.user1.getUsername());
         this.player1Info.setVisible(true);
@@ -52,6 +64,10 @@ public class GameInfoController implements Initializable {
         this.user2 = user2;
         this.player2Name.setText(this.user2.getUsername());
         this.player2Info.setVisible(true);
+    }
+    
+    public void updateTimer() {
+        //Update timer label here
     }
     
     public void loadGVC(GameViewController GVC) {

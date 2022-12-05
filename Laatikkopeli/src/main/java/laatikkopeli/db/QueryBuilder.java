@@ -17,16 +17,16 @@ public class QueryBuilder {
     
     //========================================================================== INSERTS
     public String newInsertQuery(User user) {
-        this.query = "INSERT INTO "+this.userTable+" (username, password)\n"
+        this.query = "INSERT INTO "+this.userTable+" (username, password, avURL)\n"
             +"    VALUES ('"
-            +user.getUsername()+"', '"+user.getPassword()+"')";
+            +user.getUsername()+"', '"+user.getPassword()+"', '"+user.getAvatarURL()+"')";
         return this.query;
     }
     public String newInsertQuery(Score score) {
-        this.query = "INSERT INTO "+this.scoreTable+" (username, modeType, levelID, timestamp, points)\n"
+        this.query = "INSERT INTO "+this.scoreTable+" (username, modeType, levelID, datetime, points)\n"
             +"    VALUES ('"
             +score.getUsername()+"', '"+score.getModeType()+"', "
-            +score.getLevelID()+", "+score.getTimestamp()+", "+score.getPoints()+")";
+            +score.getLevelID()+", '"+score.getDatetime()+"', "+score.getPoints()+")";
         return this.query;
     }
     //========================================================================== SELECTS

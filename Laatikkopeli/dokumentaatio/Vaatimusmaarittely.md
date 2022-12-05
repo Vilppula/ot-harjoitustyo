@@ -8,7 +8,7 @@ Käyttäjällä on jokin käyttäjänimi ja sitä vastaava salasana. Tämä void
 arkaluontoista tietoa.
 ### Kirjautuminen uutena käyttäjänä
 - Käyttäjän tulee keksiä jokin pelaajanimi sekä sitä vastaava salasana. TEHTY
-- Käyttäjällä voi olla profiilikuva 
+- Käyttäjällä voi olla profiilikuva TEHTY
 - Uusi käyttäjä lisätään paikalliseen tietokantaan. TEHTY
 ### Kirjautumisen jälkeen
 - Pääsy pelitiloihin

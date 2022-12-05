@@ -48,11 +48,26 @@ public class DBhandler {                    //Sqlite database utility class
     }
 
     //========================================================================== Get single record, return as DBobject
-    public DBobject getRecord(String username) throws SQLException {            
+    
+    public DBobject getRecord(String username) throws SQLException {            //Get user-type record
         this.query = this.queryBuilder.newSelectUserQuery(username);
         ResultSet results = select();
         if (results == null) return null;
-        return new User(results.getString(1), results.getString(2));
+        return new User(results.getString(1), results.getString(2), results.getString(3));
+    }
+    
+    //========================================================================== Get multiple records, return as List<DBobject>
+    
+    public List<Score> getRecords(int levelId) throws SQLException {         //Get scores by levelId
+        this.query = this.queryBuilder.newSelectScoreQuery(levelId);
+        ResultSet results = select();
+        if (results == null) return null;
+        List<Score> scores = new ArrayList<>();
+        while (results.next()) {
+            scores.add(new Score(results.getString(1), results.getString(2), results.getInt(3), 
+                    results.getString(4), results.getInt(5)));
+        }
+        return scores;
     }
     
     //========================================================================== Get all records by tablename, return as list of DBobjects
@@ -70,15 +85,24 @@ public class DBhandler {                    //Sqlite database utility class
             //If correct tables are not present the they will be created
             Statement statement = this.connection.createStatement();
             List<String> tablelist = new ArrayList<>(Arrays.asList(
-                    "users","username","varchar(50)","password","varchar(50)"
+                    "users",
+                    "username","varchar(50)",
+                    "password","varchar(50)",
+                    "avURL","varchar(200)"
             ));
             this.query = this.queryBuilder.newCreateTableQuery(tablelist);
+            System.out.println("KYSELY: "+this.query);
             statement.execute(query);
             tablelist = new ArrayList<>(Arrays.asList(
-                    "scores","username","varchar(50)","modeType","varchar(50)",
-                    "levelID","integer","timestamp","timestamp","points","integer"
+                    "scores",
+                    "username","varchar(50)",
+                    "modeType","varchar(50)",
+                    "levelID","integer",
+                    "datetime","varchar(50)",
+                    "points","integer"
             ));
             this.query = this.queryBuilder.newCreateTableQuery(tablelist);
+            System.out.println("KYSELY: "+this.query);
             statement.execute(query);
         } catch (SQLException ex) {
             Logger.getLogger(DBhandler.class.getName()).log(Level.SEVERE, null, ex);
@@ -124,7 +148,7 @@ public class DBhandler {                    //Sqlite database utility class
         return false;
     }
     
-    //========================================================================== Clear database
+    //========================================================================== Clear database (used to delete testDB)
     public boolean clearDB() throws SQLException {
         this.connection.close();
         File dbFile = new File(this.DBname+".db");

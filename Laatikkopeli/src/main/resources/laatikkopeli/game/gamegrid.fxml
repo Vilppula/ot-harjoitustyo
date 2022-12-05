@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #404040;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laatikkopeli.controllers.GamegridController">
+<AnchorPane minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laatikkopeli.controllers.GamegridController">
    <children>
       <GridPane fx:id="gameGrid">
         <columnConstraints>

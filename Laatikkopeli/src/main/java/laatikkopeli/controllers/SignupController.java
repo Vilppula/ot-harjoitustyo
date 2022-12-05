@@ -42,7 +42,7 @@ public class SignupController implements Initializable {
         //If either of the fields is empty, return
         if (username.getText().isEmpty() || password.getText().isEmpty()) return;
         //Collect user from textfields
-        User newUser = new User(username.getText(), password.getText());
+        User newUser = new User(username.getText(), password.getText(), "/images/defaultAV.png");
         boolean success = this.FPC.getUserDao().saveUser(newUser);
         if (!success) {
             this.infoText.setText("Käyttäjä "+newUser.getUsername()+" on jo olemassa.");

@@ -35,7 +35,7 @@ public class LoginController implements Initializable {
     @FXML
     private void loginAsPlayer() throws IOException {
         if (username.getText().isEmpty() || password.getText().isEmpty()) return;       //If either of the fields is empty, return
-        User newUser = new User(username.getText(), password.getText());                //Collect user from textfields
+        User newUser = new User(username.getText(), password.getText(),"");             //Collect userinfo from textfields avURL can be empty, will be collected from DAO
         User foundUser = this.FPC.getUserDao().findUser(newUser);                       //Ask user from DB
         User current = FPC.getUser1();
         if (foundUser == null) {
@@ -48,7 +48,7 @@ public class LoginController implements Initializable {
             this.password.setText("");
         } else {
             this.loginMain.setVisible(false);
-            this.FPC.setUser(newUser);
+            this.FPC.setUser(foundUser);
         }
     }
     

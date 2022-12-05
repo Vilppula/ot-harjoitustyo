@@ -1,6 +1,7 @@
 package laatikkopeli.db;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -23,11 +24,12 @@ public class QueryBuilderTest {
     @Test
     public void rigthCreateUsersTableSqlIsGenerated() {
         List<String> testList = new ArrayList<> (
-                Arrays.asList("users","username","varchar(50)","password","varchar(50)")
+                Arrays.asList("users","username","varchar(50)","password","varchar(50)","avURL","varchar(200)")
         );
         String requiredResult = "CREATE TABLE IF NOT EXISTS users (\n"
                 +"    username varchar(50),\n"
-                +"    password varchar(50)\n"
+                +"    password varchar(50),\n"
+                +"    avURL varchar(200)\n"
                 +")";
         
         assertEquals(requiredResult,this.querybuilder.newCreateTableQuery(testList));
@@ -52,30 +54,42 @@ public class QueryBuilderTest {
     //========================================================================== insert sqls
     @Test
     public void rightInsertUserSqlIsGenerated() {
-        String requiredResult = "INSERT INTO users (username, password)\n"
-                +"    VALUES ('name', 'pass')";
-        assertEquals(requiredResult,this.querybuilder.newInsertQuery(new User("name","pass")));
+        String requiredResult = "INSERT INTO users (username, password, avURL)\n"
+                +"    VALUES ('name', 'pass', 'path')";
+        assertEquals(requiredResult,this.querybuilder.newInsertQuery(new User("name","pass","path")));
     }
     
     @Test
     public void rightInsertScoreSqlIsGenerated() {
-        Long datetime = System.currentTimeMillis();
-        Timestamp stamp = new Timestamp(datetime);
-        String requiredResult = "INSERT INTO scores (username, modeType, levelID, timestamp, points)\n"
-                +"    VALUES ('user', 'singleplayer', 1, "+stamp.toString()+", 5000)";
-        assertEquals(requiredResult,this.querybuilder.newInsertQuery(new Score("user","singleplayer", 1, stamp, 5000)));
+        LocalDateTime time = LocalDateTime.now();
+        String datetime = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(time);
+        String requiredResult = "INSERT INTO scores (username, modeType, levelID, datetime, points)\n"
+                +"    VALUES ('user', 'singleplayer', 1, '"+datetime+"', 5000)";
+        assertEquals(requiredResult,this.querybuilder.newInsertQuery(new Score("user","singleplayer", 1, datetime, 5000)));
     }
     
     //========================================================================== select sqls
     @Test
-    public void rightSelectUserSqlIsGenerated() {
+    public void correctSelectUserSqlIsGenerated() {
         String requiredResult = "SELECT * FROM users WHERE username='antero'";
         assertEquals(requiredResult,this.querybuilder.newSelectUserQuery("antero"));
     }
     
     @Test
-    public void rightSelectLevelScoresSqlIsGenerated() {
+    public void correctSelectAllUsersSqlIsGenerated() {
+        String requiredResult = "SELECT * FROM users";
+        assertEquals(requiredResult,this.querybuilder.newSelectUserQuery());
+    }
+    
+    @Test
+    public void correctSelectLevelScoresSqlIsGenerated() {
         String requiredResult = "SELECT * FROM scores WHERE levelID=10";
         assertEquals(requiredResult,this.querybuilder.newSelectScoreQuery(10));
+    }
+    
+    @Test
+    public void correctSelectAllScoresSqlIsGenerated() {
+        String requiredResult = "SELECT * FROM scores";
+        assertEquals(requiredResult,this.querybuilder.newSelectScoreQuery());
     }
 }

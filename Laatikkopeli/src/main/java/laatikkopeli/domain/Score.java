@@ -1,6 +1,8 @@
 package laatikkopeli.domain;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Score extends DBobject{
@@ -8,14 +10,14 @@ public class Score extends DBobject{
     private final String username;
     private final String modeType;
     private final int levelID;
-    private final Timestamp timestamp;
+    private final String datetime;
     private int points;
 
-    public Score(String username, String modeType, int levelID, Timestamp timestamp, int points) {
+    public Score(String username, String modeType, int levelID, String datetime, int points) {
         this.username = username;
         this.modeType = modeType;
         this.levelID = levelID;
-        this.timestamp = timestamp;
+        this.datetime = datetime;
         this.points = points;
     }
 
@@ -31,18 +33,12 @@ public class Score extends DBobject{
         return levelID;
     }
 
-    public Timestamp getTimestamp() {
-        return timestamp;
+    public String getDatetime() {
+        return datetime;
     }
 
     public int getPoints() {
         return points;
-    }
-    
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
     }
 
     @Override
@@ -63,14 +59,9 @@ public class Score extends DBobject{
         if (!Objects.equals(this.modeType, other.modeType)) {
             return false;
         }
-        if (!Objects.equals(this.timestamp, other.timestamp)) {
+        if (!Objects.equals(this.datetime, other.datetime)) {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Score{" + "username=" + username + ", modeType=" + modeType + ", timestamp=" + timestamp + '}';
     }
 }

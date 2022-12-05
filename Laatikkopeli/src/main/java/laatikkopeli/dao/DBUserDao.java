@@ -40,7 +40,7 @@ public class DBUserDao implements UserDao {
         List<User> userlist = new ArrayList<>();
         try {
             while (results.next()) {
-               userlist.add(new User(results.getString(1),results.getString(2)));
+               userlist.add(new User(results.getString(1),results.getString(2),results.getString(3)));
             }
             this.users = userlist;
         } catch (SQLException ex) {
