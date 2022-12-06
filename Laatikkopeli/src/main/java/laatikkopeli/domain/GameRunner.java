@@ -103,12 +103,12 @@ public class GameRunner {
     
             
     //CHECK LEGIT MOVES FOR A CHAR/BOX =========================================
-    public boolean checkMove(int i, int j, int translateI, int translateJ) {    //Confirm allowed move here
-        if (i < 0 || j < 0 || i > areaSize - 1 || j > areaSize - 1) {           //Outside gamearea
+    public boolean checkMove(int i, int j, int translateI, int translateJ) {    // Check if move is allowed
+        if (i < 0 || j < 0 || i > areaSize - 1 || j > areaSize - 1) {           // If move is directed out of the game area
             return false;
         }   
         Actor nextActor = state[i][j].getActor();
-        if (nextActor == null) {                                                //No actor in next tile
+        if (nextActor == null) {                                                // No actor in next tile
             return true;
         }                                         
         char role = nextActor.getRole();
