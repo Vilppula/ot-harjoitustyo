@@ -11,6 +11,11 @@ import org.junit.Test;
 public class GameRunnerTest {
     
     GameRunner gameRunner;
+    String[] layoutTest = {
+        "1,,",
+        ",,,"    
+    };
+    GameLayout testGameLayout = new GameLayout("test", layoutTest);
     
     @Before
     public void setUp() {
@@ -24,17 +29,22 @@ public class GameRunnerTest {
     }
     
     @Test
+    public void gameHasOnePlayerWhenNewGameCanBeStarted() {
+    }
+    
+    @Test
     public void createTileMethodCanCreateFloorTiles() {
        
     }
     
     @Test
     public void createTileMethodCanCreateWallTiles() {
-     
+        
     }
     
     @Test
     public void playerCannotMoveOutsideGameArea() {
-       
+       assertEquals(false, this.gameRunner.checkMove(0, 0, -1, 0));
+       assertEquals(false, this.gameRunner.checkMove(0, 0, 0, -1));
     }
 }
