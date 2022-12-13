@@ -13,3 +13,7 @@
 | 2.12 |7h| Käyttöliittymän parantelua. Pelitilan luominen etenee |
 | 4.12 |7h| Käyttöliittymän, ominaisuuksien pareantelua. |
 | 5.12 |6h| Testien ja dokumentaation parantelua |
+| 11.12|5h| Algoritmin toimintaan saattelemista |
+|12.12|6h| Algoritmin parantelu, käyttöliittymän parantelu, JavaDoc|
+|13.12|2h| JavaDoc, yleistä siistimistä |
+| |69h | 
