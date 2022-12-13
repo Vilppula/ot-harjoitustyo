@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.8" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="780.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19">
+  <items>
+      <HBox fx:id="areaInfo" alignment="CENTER" prefHeight="98.0" prefWidth="619.0" spacing="40.0" style="-fx-background-color: LIGHTGREY;">
+         <children>
+            <Label fx:id="areaName" text="Label">
+               <font>
+                  <Font name="Bodoni MT Bold" size="28.0" />
+               </font>
+            </Label>
+            <VBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Label text="Top player:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="topPlayerName" text="*player name*">
+                     <font>
+                        <Font name="Bodoni MT" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+    <AnchorPane fx:id="minimap" minHeight="0.0" minWidth="0.0" style="-fx-background-color: LIGHTGREY;" />
+  </items>
+   <padding>
+      <Insets bottom="5.0" right="5.0" />
+   </padding>
+</SplitPane>

@@ -19,39 +19,55 @@
                      <children>
                         <VBox fx:id="player1Info" prefHeight="210.0" prefWidth="179.0">
                            <children>
-                              <VBox fx:id="player1NameInfo" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="100.0">
+                              <VBox fx:id="player1NameInfo" alignment="TOP_CENTER" prefHeight="60.0" prefWidth="100.0" spacing="5.0">
                                  <children>
                                       <Label text="Pelaaja 1:" textAlignment="CENTER" textFill="#b58435" textOverrun="WORD_ELLIPSIS">
                                          <font>
                                             <Font name="Copperplate Gothic Light" size="18.0" />
                                          </font>
                                       </Label>
-                                      <Label fx:id="player1Name" alignment="TOP_LEFT" contentDisplay="TOP" text="*get name*" textFill="#f5cece">
+                                      <Label fx:id="player1Name" alignment="TOP_LEFT" contentDisplay="TOP" text="*get name*" textFill="WHITE">
                                          <font>
-                                            <Font name="Corbel" size="23.0" />
+                                            <Font name="Corbel" size="18.0" />
                                          </font>
                                       </Label>
                                  </children>
                               </VBox>
-                              <VBox fx:id="player1GameInfo" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+                              <VBox fx:id="player1GameInfo" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="80.0" prefWidth="100.0" spacing="10.0">
                                  <children>
-                                      <Label alignment="TOP_RIGHT" contentDisplay="CENTER" text="Moves:" textAlignment="RIGHT">
+                                      <Label alignment="TOP_RIGHT" contentDisplay="CENTER" text="Askeleet:" textAlignment="RIGHT" textFill="#b58435">
                                          <font>
-                                            <Font name="Copperplate Gothic Light" size="25.0" />
+                                            <Font name="Copperplate Gothic Light" size="16.0" />
                                          </font>
                                       </Label>
-                                      <Label fx:id="player1Moves" text="*get moves*">
+                                      <Label fx:id="player1Steps" text="0" textFill="WHITE">
                                          <font>
-                                            <Font name="Corbel" size="22.0" />
+                                            <Font name="Bodoni MT" size="36.0" />
                                          </font>
                                       </Label>
                                  </children>
                               </VBox>
+                              <HBox alignment="CENTER" spacing="10.0" translateX="-20.0">
+                                 <children>
+                                    <Label text="Min:" textFill="WHITE" />
+                                    <Label fx:id="player1MinSteps" text="0" textFill="#72eb92">
+                                       <font>
+                                          <Font name="Bodoni MT" size="24.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </HBox>
                            </children>
                         </VBox>
                         <VBox fx:id="player2Info" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="210.0" prefWidth="179.0">
                            <children>
-                              <VBox fx:id="player2NameInfo" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="100.0">
+                              <VBox fx:id="player2NameInfo" alignment="TOP_CENTER" prefHeight="60.0" prefWidth="100.0" spacing="5.0">
                                  <children>
                                     <Label text="Pelaaja 2:" textAlignment="CENTER" textFill="#7aab46" textOverrun="WORD_ELLIPSIS">
                                        <font>
@@ -60,23 +76,39 @@
                                     </Label>
                                     <Label fx:id="player2Name" alignment="TOP_LEFT" contentDisplay="TOP" text="*get name*" textFill="#f9ffb7">
                                        <font>
-                                          <Font name="Corbel" size="23.0" />
+                                          <Font name="Corbel" size="18.0" />
                                        </font>
                                     </Label>
                                  </children>
                               </VBox>
-                              <VBox fx:id="player2GameInfo" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+                              <VBox fx:id="player2GameInfo" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="80.0" prefWidth="100.0" spacing="10.0">
                                  <children>
-                                    <Label alignment="TOP_RIGHT" contentDisplay="CENTER" text="Moves:" textAlignment="RIGHT">
+                                    <Label alignment="TOP_RIGHT" contentDisplay="CENTER" text="Askeleet:" textAlignment="RIGHT" textFill="#7aab46">
                                        <font>
-                                          <Font name="Copperplate Gothic Light" size="25.0" />
+                                          <Font name="Copperplate Gothic Light" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="player2Moves" text="*get moves*">
+                                    <Label fx:id="player2Steps" text="0" textFill="WHITE">
                                        <font>
-                                          <Font name="Corbel" size="22.0" />
+                                          <Font name="Bodoni MT" size="36.0" />
                                        </font>
                                     </Label>
+                                    <HBox alignment="CENTER" spacing="10.0" translateX="-20.0">
+                                       <children>
+                                          <Label text="Min:" textFill="WHITE" />
+                                          <Label fx:id="player2MinSteps" text="0" textFill="#72eb92">
+                                             <font>
+                                                <Font name="Bodoni MT" size="24.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </HBox>
                                  </children>
                               </VBox>
                            </children>

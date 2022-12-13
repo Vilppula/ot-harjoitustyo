@@ -2,7 +2,7 @@ package laatikkopeli.domain;
 
 import javafx.scene.image.Image;
 
-
+//This class represents actor of Laatikkopeli. Player, box, gate, wall...
 public class Actor {
 
     private int i, j;

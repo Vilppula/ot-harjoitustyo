@@ -66,6 +66,11 @@
             </HBox>
             <StackPane prefHeight="80.0" prefWidth="240.0" translateX="560.0">
                <children>
+                  <Button fx:id="loginP2" alignment="CENTER" mnemonicParsing="false" onAction="#openLoginView" text="Kirjaudu">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
                   <HBox fx:id="showPlayer2" prefHeight="100.0" prefWidth="240.0" spacing="15.0">
                      <children>
                         <Pane minWidth="80.0" prefHeight="80.0" prefWidth="80.0">
@@ -89,11 +94,6 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <Button fx:id="loginP2" alignment="CENTER" mnemonicParsing="false" onAction="#openLoginView" text="Kirjaudu">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
                </children>
                <padding>
                   <Insets left="10.0" />
@@ -101,9 +101,10 @@
             </StackPane>
          </children>
       </AnchorPane>
-      <StackPane fx:id="mainArea" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="780.0">
+      <StackPane alignment="TOP_CENTER" prefHeight="600.0" prefWidth="780.0">
          <children>
-            
+            <ImageView fx:id="mainImage" pickOnBounds="true" preserveRatio="true" />
+            <AnchorPane fx:id="mainArea" prefHeight="200.0" prefWidth="200.0" />
          </children>
       </StackPane>
    </children>

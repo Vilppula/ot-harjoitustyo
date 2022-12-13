@@ -6,7 +6,6 @@ import java.util.Timer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import laatikkopeli.domain.TimerHandler;
 import laatikkopeli.domain.User;
@@ -20,18 +19,17 @@ public class GameInfoController implements Initializable {
     private TimerHandler timerHandler;
     private Timer timer;
     
-    @FXML VBox player1Info;                 //FXML elements
-    @FXML VBox player2Info;
-    @FXML Label player1Name;
-    @FXML Label player2Name;
+    @FXML VBox player1Info, player2Info;
+    @FXML Label player1Name, player2Name;
     @FXML Label timerLabel;
-    @FXML ImageView player1Avatar;
-    @FXML ImageView player2Avatar;
+    @FXML Label player1Steps, player2Steps;
+    @FXML Label player1MinSteps, player2MinSteps;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         player1Info.setVisible(false);
         player2Info.setVisible(false);
+        this.player2Info.setDisable(true);
         this.timerHandler = new TimerHandler(this.timerLabel);
         this.timer = new Timer();
         timer.schedule(timerHandler, 1000, 1000);
@@ -42,7 +40,7 @@ public class GameInfoController implements Initializable {
     }
     
     public void restartGame() {
-        this.GVC.setUpGameView();
+        this.GVC.reloadCurrent();
     }
 
     public User getUser1() {
@@ -66,11 +64,36 @@ public class GameInfoController implements Initializable {
         this.player2Info.setVisible(true);
     }
     
+    public void updateP1Counter() {
+        this.player1Steps.setText(""+(Integer.valueOf(this.player1Steps.getText())+1));
+    }
+    public void updateP2Counter() {
+        this.player2Steps.setText(""+(Integer.valueOf(this.player2Steps.getText())+1));
+    }
+    
+    public void switchTurn() {
+        if (this.player1Info.isDisable() == true) {
+            this.player1Info.setDisable(false);
+            this.player2Info.setDisable(true);
+        } else {
+            this.player1Info.setDisable(true);
+            this.player2Info.setDisable(false);
+        }
+    }
+    
     public void updateTimer() {
         //Update timer label here
     }
     
+    public void setPlayer1Min(int steps) {
+        this.player1MinSteps.setText(""+steps);
+    }
+    
     public void loadGVC(GameViewController GVC) {
         this.GVC = GVC;
+    }
+    
+    public void loadGGC(GamegridController GGC) {
+        this.GGC = GGC;
     }
 }

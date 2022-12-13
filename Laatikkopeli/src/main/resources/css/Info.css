@@ -1,0 +1,42 @@
+.win {
+    -fx-background-color:lightgoldenrodyellow;
+    -fx-border-color:lightgreen
+}
+
+.lose {
+    -fx-background-color:lightgoldenrodyellow;
+    -fx-border-color:red;
+}
+
+.fancy1 {
+    -fx-fill:goldenrod;
+    -fx-font-weight: bold;
+    -fx-font-size: 40px;
+    -fx-fill: linear-gradient(from 0% 0% to 100% 100%, repeat, #ffff33 0%, goldenrod 50%);
+    -fx-stroke: black;
+    -fx-stroke-width: 1;
+}
+
+.fancy2 {
+    -fx-fill: red;
+    -fx-font-weight: bold;
+    -fx-font-size: 40px;
+    -fx-fill: linear-gradient(from 0% 0% to 100% 100%, repeat, orange 0%, red 50%);
+    -fx-stroke: black;
+    -fx-stroke-width: 1;
+}
+
+.fancy3 {
+    -fx-fill: white;
+    -fx-font-weight: bold;
+    -fx-fill: linear-gradient(from 0% 0% to 100% 100%, repeat, grey 0%, white 50%);
+    -fx-stroke: black;
+    -fx-stroke-width: 3;
+}
+
+.fancy4 {
+    -fx-fill: white;
+    -fx-stroke: black;
+    -fx-stroke-width: 2;
+}
+

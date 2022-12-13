@@ -15,7 +15,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import laatikkopeli.dao.DBUserDao;
 import laatikkopeli.db.DBhandler;
 import laatikkopeli.domain.User;
@@ -28,7 +27,8 @@ public class FrontPageController implements Initializable {
     private User user2;
     
     @FXML AnchorPane topButtons;                                                //Below main title: 3 buttons
-    @FXML Pane mainArea;                                                        //Main view. Changes by pressing buttons on "buttonbar"
+    @FXML AnchorPane mainArea;                                                  //Main view. Changes by pressing buttons on "buttonbar"
+    @FXML ImageView mainImage;
 
     // Player related buttons and views
     @FXML HBox showPlayer1;                                                     //Contains name of logged in player1 + login/logout buttons
@@ -60,24 +60,30 @@ public class FrontPageController implements Initializable {
         this.showPlayer1.setVisible(false);
         this.showPlayer2.setVisible(false);
         this.loginP2.setDisable(true);
+        this.mainArea.setVisible(false);
+        this.mainImage.setImage(new Image("/images/Main.png"));
     }
     
     @FXML
-    public void openLoginView() throws IOException {                                                //Load login.fxml inside 'mainArea'-pane
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/laatikkopeli/login.fxml"));
+    public void openLoginView() throws IOException {                            //Load login.fxml inside 'mainArea'-AnchorPane
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                "/laatikkopeli/login.fxml"));
         Parent loginview = loader.load();
         this.mainArea.getChildren().clear();
         this.mainArea.getChildren().add(loginview);
+        switchMain();
         LoginController logincontroller = loader.getController();
         logincontroller.loadFPC(this);
     }
     
     @FXML
-    public void openSignupView() throws IOException {                                               //Load signup.fxml inside 'mainArea'-pane
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/laatikkopeli/signup.fxml"));
+    public void openSignupView() throws IOException {                            //Load signup.fxml inside 'mainArea'-pane
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                "/laatikkopeli/signup.fxml"));
         Parent signupview = loader.load();
         this.mainArea.getChildren().clear();
         this.mainArea.getChildren().add(signupview);
+        switchMain();
         SignupController signupcontroller = loader.getController();
         signupcontroller.loadFPC(this);
     }
@@ -85,10 +91,12 @@ public class FrontPageController implements Initializable {
     @FXML
     public void openSinglePlayerView() throws IOException {
         this.switchTopButtons();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/laatikkopeli/game/gameView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                "/laatikkopeli/game/gameView.fxml"));
         Parent gameView = loader.load();
         this.mainArea.getChildren().clear();
         this.mainArea.getChildren().add(gameView);
+        switchMain();
         GameViewController gameViewController = loader.getController();
         gameViewController.loadFPC(this);
         gameViewController.setUpSinglePlayerView(this.user1);
@@ -97,18 +105,27 @@ public class FrontPageController implements Initializable {
     @FXML
     public void openTwoPlayerView() throws IOException {
         this.switchTopButtons();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/laatikkopeli/game/gameView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                "/laatikkopeli/game/gameView.fxml"));
         Parent gameView = loader.load();
         this.mainArea.getChildren().clear();
         this.mainArea.getChildren().add(gameView);
+        switchMain();
         GameViewController gameViewController = loader.getController();
         gameViewController.loadFPC(this);
         gameViewController.setUpTwoPlayerView(this.user1, this.user2);
     }
-    //========================================================================== HIDE/UNHIDE BUTTONS
+    
+    //========================================================================== HIDE/UNHIDE ELEMNTS
     public void switchTopButtons() {
         this.topButtons.setDisable(!this.topButtons.isDisable());
     }
+    
+    public void switchMain() {
+        this.mainArea.setVisible(!this.mainArea.isVisible());
+        //this.mainImage.setVisible(!this.mainImage.isVisible());
+    }
+    
     //========================================================================== LOGOUT METHODS
     public void logoutP1() {
         System.out.println("KIRJATAAN ULOS PELAAJA "+user1.getUsername());
@@ -117,10 +134,14 @@ public class FrontPageController implements Initializable {
         if (this.user2 != null) {
             this.user1 = this.user2; this.user2 = null;
             this.player1Name.setText(this.user1.getUsername());
-            this.logoutP2.setVisible(false); this.loginP2.setVisible(true);
+            this.logoutP2.setVisible(false); 
+            this.loginP2.setVisible(true);
+            this.player1Avatar.setImage(this.player2Avatar.getImage());
+            this.player2Avatar.setImage(null);
         }
         else {
-            this.user1 = null; this.loginP2.setDisable(true);
+            this.user1 = null; 
+            this.loginP2.setDisable(true);
             this.logoutP1.setVisible(false);
             this.loginP1.setVisible(true);
             this.player1Name.setText("");
@@ -135,6 +156,7 @@ public class FrontPageController implements Initializable {
         this.player2Name.setText("");
         this.showPlayer2.setVisible(false);
         this.loginP2.setVisible(true);
+        this.loginP2.setDisable(false);
     }
 
     //========================================================================== SHARE RESOURCES TO NESTED CONTROLLERS
@@ -160,6 +182,7 @@ public class FrontPageController implements Initializable {
             this.player1Avatar.setImage(new Image(user1.getAvatarURL()));
             this.showPlayer1.setVisible(true);
             this.loginP1.setVisible(false);
+            this.logoutP1.setVisible(true);
             this.play1Button.setDisable(false);
             this.loginP2.setDisable(false);
         
@@ -169,6 +192,7 @@ public class FrontPageController implements Initializable {
             this.player2Avatar.setImage(new Image(user2.getAvatarURL()));
             this.showPlayer2.setVisible(true); 
             this.loginP2.setVisible(false);
+            this.logoutP2.setVisible(true);
             this.play2Button.setDisable(false);
         }
     }

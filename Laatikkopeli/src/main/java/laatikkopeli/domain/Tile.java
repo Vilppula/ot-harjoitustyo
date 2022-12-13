@@ -18,7 +18,7 @@ public class Tile { //Tile has knowledege only about homebox it resides in and t
         updateTile();
     }
 
-    public void setActor(Actor actor) {
+    public void setActor(Actor actor) {                                         //Set actor for this tile. Null = no actor on the tile
         this.actor = actor;
         updateTile();
     }

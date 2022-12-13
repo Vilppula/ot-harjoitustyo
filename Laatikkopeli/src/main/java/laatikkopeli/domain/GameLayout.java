@@ -3,12 +3,13 @@ package laatikkopeli.domain;
 public class GameLayout {
     
     private String name;
-    private int size;
-    private String layout;
-
-    public GameLayout(String name, int size, String layout) {
+    private int height, width;
+    private String[] layout;
+    
+    public GameLayout(String name, String[] layout) {
         this.name = name;
-        this.size = size;
+        this.height = layout.length;
+        this.width = layout[0].length();
         this.layout = layout;
     }
 
@@ -16,11 +17,15 @@ public class GameLayout {
         return name;
     }
 
-    public int getSize() {
-        return size;
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
     }
     
-    public String getLayout() {
+    public String[] getLayout() {
         return layout;
     }
 }

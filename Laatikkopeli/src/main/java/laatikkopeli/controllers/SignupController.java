@@ -10,14 +10,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
-import laatikkopeli.dao.DBUserDao;
 import laatikkopeli.domain.User;
 
 //Controls class for signup-view-fxml
 public class SignupController implements Initializable {
 
-    private DBUserDao userDao;
     private FrontPageController FPC;
     
     @FXML VBox signupMain;            //Content of the signup-view
@@ -25,7 +24,7 @@ public class SignupController implements Initializable {
     @FXML TextField password;
     @FXML Button createNew;
     @FXML Button returnToFrontpage;
-    @FXML Label infoText;
+    @FXML Text infoText;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -35,6 +34,7 @@ public class SignupController implements Initializable {
     @FXML
     private void closeSignupView() throws IOException {
         signupMain.setVisible(false);
+        FPC.switchMain();
     }
     
     @FXML

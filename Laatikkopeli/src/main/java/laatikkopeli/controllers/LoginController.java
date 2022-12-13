@@ -9,7 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 import laatikkopeli.domain.User;
 
@@ -17,10 +17,9 @@ public class LoginController implements Initializable {
 
     private FrontPageController FPC;
     
-    @FXML AnchorPane loginMain;
     @FXML TextField username;
     @FXML PasswordField password;
-    @FXML Label infoText;
+    @FXML Text infoText;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -29,25 +28,26 @@ public class LoginController implements Initializable {
     
     @FXML
     public void closeLoginView() {
-        this.loginMain.setVisible(false);
+        FPC.switchMain();
     }
     
     @FXML
     private void loginAsPlayer() throws IOException {
         if (username.getText().isEmpty() || password.getText().isEmpty()) return;       //If either of the fields is empty, return
         User newUser = new User(username.getText(), password.getText(),"");             //Collect userinfo from textfields avURL can be empty, will be collected from DAO
-        User foundUser = this.FPC.getUserDao().findUser(newUser);                       //Ask user from DB
-        User current = FPC.getUser1();
+        User foundUser = this.FPC.getUserDao().findUser(newUser);                       //Ask user from DAO
         if (foundUser == null) {
             showMessage("Pelaajaa '"+newUser.getUsername()+"' ei löydy."); 
-        } else if (current != null && current.equals(foundUser)) { 
-            showMessage("Pelaaja '"+current.getUsername()+"' on jo kirjautunut.");
+        } else if (foundUser.equals(FPC.getUser1()) ||
+                foundUser.equals(FPC.getUser2())) { 
+            showMessage("Pelaaja '"+foundUser.getUsername()+"' on jo kirjautunut.");
             this.password.setText(""); this.username.setText("");
         } else if (!foundUser.getPassword().equals(newUser.getPassword())) {
-            showMessage("Väärä salasana. (oli '" + newUser.getPassword() + "', pitäisi olla '" + foundUser.getPassword() + "')");
+            showMessage("Väärä salasana. (oli '" + newUser.getPassword() 
+                    + "', pitäisi olla '" + foundUser.getPassword() + "')");
             this.password.setText("");
         } else {
-            this.loginMain.setVisible(false);
+            this.FPC.switchMain();
             this.FPC.setUser(foundUser);
         }
     }
