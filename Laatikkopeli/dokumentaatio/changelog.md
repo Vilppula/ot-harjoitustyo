@@ -19,3 +19,12 @@
 - Inforuudussa näytetään kirjautuneen/kirjautuneiden pelaajien tiedot
 - Pelialueelle ladataan layout-instanssin määrittelemä pelinäkymä, joka koostuu erilaisista image-olioista
 - Pelaaja-oliota voi liikutella ja ne voivat työntää laatikko-olioita
+
+### Viikko 6
+- Algoritmi laskee lyhyimmän reitin (ainakin yhden pelaajan pelialueella).
+- Pelin inforuutu päivittää käytetyt askeleet ja lyhyimmän reitin kustakin pelitilanteesta.
+- DAO (ei I/O:ta) tarjoaa listan pelialueista, joista pelaaja voi valita.
+- Peli päättyy tappioon jos laatikkoa ei voi enää saada maaliin. Tästä tulee ilmoitus.
+- Peli päättyy voittoon jos laatikko saadaan maaliin. Tästä tulee ilmoitus.
+- Pelin voi aloittaa alusta.
+- Ohjelman ulkoasua on päivitetty.
