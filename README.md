@@ -38,3 +38,4 @@ java -jar target/Laatikkopeli-1.0-SNAPSHOT.jar
 Jos tämä ei toimi, jar-tiedoston pitäisi löytyä target-kansiosta (tiedostonimi ei sisällä 'original'-alkuosaa).
 ## Julkaisut
 [viikko 5](https://github.com/Vilppula/ot-harjoitustyo/releases/tag/viikko5)  
+[viikko 6](https://github.com/Vilppula/ot-harjoitustyo/releases/tag/viikko6)
