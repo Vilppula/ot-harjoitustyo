@@ -11,4 +11,4 @@ että FXML-hierarkiassa ylempänä oleva controller-olio huolehtii yhteyden muod
 <img src="https://github.com/Vilppula/ot-harjoitustyo/blob/master/Laatikkopeli/dokumentaatio/img/LoginScheme.jpg" width="700">  
 
 ### Pelitulosten hakeminen
-<img src="https://github.com/Vilppula/ot-harjoitustyo/blob/master/Laatikkopeli/dokumentaatio/img/ScoreRetrieval.png" width="700"> 
+<img src="https://github.com/Vilppula/ot-harjoitustyo/blob/master/Laatikkopeli/dokumentaatio/img/ScoreDao.png" width="700"> 
