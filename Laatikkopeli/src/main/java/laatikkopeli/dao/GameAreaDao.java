@@ -28,7 +28,7 @@ public class GameAreaDao {
         ,",,,,,,,,,,,,,,,"
     };
     
-    private GameLayout level = new GameLayout("testlevel", testLayout1);         //Use this until game chooser have been built
+    private GameLayout level = new GameLayout(1, "testlevel", testLayout1);         //Use this until game chooser have been built
     
     String[] testLayout2 = {
         ",,,#,,,,,,",
@@ -40,7 +40,7 @@ public class GameAreaDao {
         ",,,#,##,,#"
     };
     
-    private GameLayout level2 = new GameLayout("testlevel2", testLayout2);
+    private GameLayout level2 = new GameLayout(2, "testlevel2", testLayout2);
     
     public GameAreaDao() {
         this.areas = new ArrayList<>();

@@ -1,5 +1,6 @@
 package laatikkopeli.dao;
 
+import java.util.List;
 import laatikkopeli.domain.User;
 
 public interface UserDao {
@@ -8,5 +9,5 @@ public interface UserDao {
     
     User findUser(User user);
     
-    void findAll();
+    List<User> findAll();
 }

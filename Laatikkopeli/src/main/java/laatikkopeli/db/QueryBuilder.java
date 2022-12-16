@@ -26,7 +26,7 @@ public class QueryBuilder {
         this.query = "INSERT INTO " + this.scoreTable + " (username, modeType, levelID, datetime, points)\n"
             + "    VALUES ('"
             + score.getUsername() + "', '" + score.getModeType() + "', "
-            + score.getLevelID() + ", '" + score.getDatetime() + "', " + score.getPoints() + ")";
+            + score.getAreaId() + ", '" + score.getDatetime() + "', " + score.getPoints() + ")";
         return this.query;
     }
     //========================================================================== SELECTS
@@ -38,8 +38,13 @@ public class QueryBuilder {
         this.query = "SELECT * FROM " + this.userTable + " WHERE username='" + username + "'";
         return this.query;
     }
+    
     public String newSelectScoreQuery() {                       //Get all scores
         this.query = "SELECT * FROM " + this.scoreTable;
+        return this.query;
+    }
+    public String newSelectScoreQuery(String username) {        //Get scores by username
+        this.query = "SELECT * FROM " + this.scoreTable + "WHERE username=" + username;
         return this.query;
     }
     public String newSelectScoreQuery(int levelID) {            //Get scores by level id

@@ -6,14 +6,14 @@ public class Score extends DBobject {
     
     private final String username;
     private final String modeType;
-    private final int levelID;
+    private final Integer areaId;
     private final String datetime;
-    private int points;
+    private Integer points;
 
-    public Score(String username, String modeType, int levelID, String datetime, int points) {
+    public Score(String username, String modeType, int areaId, String datetime, int points) {
         this.username = username;
         this.modeType = modeType;
-        this.levelID = levelID;
+        this.areaId = areaId;
         this.datetime = datetime;
         this.points = points;
     }
@@ -26,15 +26,15 @@ public class Score extends DBobject {
         return modeType;
     }
 
-    public int getLevelID() {
-        return levelID;
+    public Integer getAreaId() {
+        return areaId;
     }
 
     public String getDatetime() {
         return datetime;
     }
 
-    public int getPoints() {
+    public Integer getPoints() {
         return points;
     }
 
@@ -53,7 +53,7 @@ public class Score extends DBobject {
         if (!Objects.equals(this.username, other.username)) {
             return false;
         }
-        if (!Objects.equals(this.modeType, other.modeType)) {
+        if (this.areaId != other.areaId) {
             return false;
         }
         if (!Objects.equals(this.datetime, other.datetime)) {

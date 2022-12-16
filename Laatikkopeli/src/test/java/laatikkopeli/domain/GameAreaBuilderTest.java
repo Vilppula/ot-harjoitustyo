@@ -15,7 +15,7 @@ public class GameAreaBuilderTest {
         "1,,",
         ",,,"    
     };
-    GameLayout testGameLayout = new GameLayout("test", layoutTest);
+    GameLayout testGameLayout = new GameLayout(1, "test", layoutTest);
     
     @Before
     public void setUp() {

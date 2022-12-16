@@ -37,10 +37,7 @@ public class DBhandlerTest {
         String datetime = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(time);
         DBobject testScore = new Score("user","mode",1,datetime,1000);
         assertEquals(true, this.dbhandler.newRecord(testScore));
-        List<Score> returnScores = this.dbhandler.getRecords(1);
-        for (DBobject d: returnScores) {
-            System.out.println();
-        }
+        List<DBobject> returnScores = this.dbhandler.getScores(1);
         assertEquals(true, returnScores.contains(testScore));
     }
    

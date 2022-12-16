@@ -2,8 +2,6 @@ package laatikkopeli.controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 import java.util.logging.Level;
@@ -12,7 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
@@ -30,7 +27,6 @@ public class GameViewController implements Initializable {
     private User user1, user2;
     private GamegridController GGC;     //Child controllers
     private GameInfoController GIC;     //--"--
-    private ChooseGameController CGC;
     private GameRunner gameRunner;      //Game logic
     private GameAreaDao areas;
     private GameLayout gameLayout;
@@ -99,7 +95,7 @@ public class GameViewController implements Initializable {
             
             //Load gameInfo
             FXMLLoader infoloader = new FXMLLoader(getClass().getResource(
-                    "/laatikkopeli/game/gameInfo.fxml"));
+                    "/fxml/game/gameInfo.fxml"));
             Parent gameInfoView = infoloader.load();
             this.gameplay.getItems().add(gameInfoView);
             this.GIC = infoloader.getController();
@@ -110,7 +106,7 @@ public class GameViewController implements Initializable {
             
             //Load gamegrid
             FXMLLoader gridloader = new FXMLLoader(getClass().getResource(
-                    "/laatikkopeli/game/gamegrid.fxml"));
+                    "/fxml/game/gamegrid.fxml"));
             Parent gameGridView = gridloader.load();
             this.gameplay.getItems().add(gameGridView);
             this.GGC = gridloader.getController();

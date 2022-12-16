@@ -1,20 +1,22 @@
 package laatikkopeli.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import laatikkopeli.db.DBhandler;
+import laatikkopeli.domain.DBobject;
 import laatikkopeli.domain.User;
 
 public class DBUserDao implements UserDao {
 
-    private final DBhandler dbhandler;
-    private List<User> users;                               //Runtime users-list working as cache
+    private final DBhandler handler;
+    private String userTable;
+    private List<User> users;                                                   //Runtime users-list working as cache
 
-    public DBUserDao(DBhandler dbhandler) {
-        this.dbhandler = dbhandler;
-        this.findAll();                                     
+    
+    public DBUserDao(DBhandler handler) {
+        this.handler = handler;
+        this.userTable = handler.getUserTableName();
+        findAll();                                                              
     }
 
     @Override
@@ -22,8 +24,8 @@ public class DBUserDao implements UserDao {
         if (this.users.contains(user)) {
             return false;
         }
-        boolean success = this.dbhandler.newRecord(user);   //Ask for insertion of new DBobject
-        if (success) {                                      //If successful, add user to runtimelist
+        boolean success = this.handler.newRecord(user);                         //Ask for insertion of new DBobject
+        if (success) {                                                          //If successful, add user to runtimelist
             this.users.add(user);       
         }                  
         return success;
@@ -31,27 +33,31 @@ public class DBUserDao implements UserDao {
 
     @Override
     public User findUser(User user) {                                           //Checks if user is in cache
-        System.out.println("Kysely: pelaaja " + user.getUsername() + ": " + this.users.contains(user));
         if (this.users.contains(user)) {
             return this.users.get(this.users.indexOf(user));
         }
-        return null;
+        User dbUser = (User) handler.getRecord(user.getUsername());
+        if (dbUser != null) {
+            this.users.add(dbUser);
+        }
+        return dbUser;
     }
 
     @Override
-    public void findAll() {                                                     //Load users to cache
-        ResultSet results = this.dbhandler.getAll("users");
-        if (results == null) {
-            System.out.println("TYHJÄÄ TÄYNNÄ");
+    public List<User> findAll() {                                               //Load users to cache and return list
+        if (this.users == null) {
+            this.users = castToUser(this.handler.getAll(userTable));
         }
-        List<User> userlist = new ArrayList<>();
-        try {
-            while (results.next()) {
-                userlist.add(new User(results.getString(1), results.getString(2), results.getString(3)));
-            }
-            this.users = userlist;
-        } catch (SQLException ex) {
-            return;
-        }
+        return this.users;
+    }
+    
+    /**
+     * Helper method to cast List<DBobject> to List<User>
+     * @param list
+     * @return 
+     */
+    private List<User> castToUser(List<DBobject> list) {                      
+        return list.stream().map(User.class::cast)
+                .collect(Collectors.toList());
     }
 }

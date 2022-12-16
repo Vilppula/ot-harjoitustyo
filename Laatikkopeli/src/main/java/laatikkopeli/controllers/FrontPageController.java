@@ -13,7 +13,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import laatikkopeli.dao.DBUserDao;
 import laatikkopeli.db.DBhandler;
@@ -67,7 +66,7 @@ public class FrontPageController implements Initializable {
     @FXML
     public void openLoginView() throws IOException {                            //Load login.fxml inside 'mainArea'-AnchorPane
         FXMLLoader loader = new FXMLLoader(getClass().getResource(
-                "/laatikkopeli/login.fxml"));
+                "/fxml/login.fxml"));
         Parent loginview = loader.load();
         this.mainArea.getChildren().clear();
         this.mainArea.getChildren().add(loginview);
@@ -79,7 +78,7 @@ public class FrontPageController implements Initializable {
     @FXML
     public void openSignupView() throws IOException {                            //Load signup.fxml inside 'mainArea'-pane
         FXMLLoader loader = new FXMLLoader(getClass().getResource(
-                "/laatikkopeli/signup.fxml"));
+                "/fxml/signup.fxml"));
         Parent signupview = loader.load();
         this.mainArea.getChildren().clear();
         this.mainArea.getChildren().add(signupview);
@@ -92,7 +91,7 @@ public class FrontPageController implements Initializable {
     public void openSinglePlayerView() throws IOException {
         this.switchTopButtons();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(
-                "/laatikkopeli/game/gameView.fxml"));
+                "/fxml/game/gameView.fxml"));
         Parent gameView = loader.load();
         this.mainArea.getChildren().clear();
         this.mainArea.getChildren().add(gameView);
@@ -106,7 +105,7 @@ public class FrontPageController implements Initializable {
     public void openTwoPlayerView() throws IOException {
         this.switchTopButtons();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(
-                "/laatikkopeli/game/gameView.fxml"));
+                "/fxml/game/gameView.fxml"));
         Parent gameView = loader.load();
         this.mainArea.getChildren().clear();
         this.mainArea.getChildren().add(gameView);

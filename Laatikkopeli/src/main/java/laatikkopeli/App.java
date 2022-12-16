@@ -25,7 +25,7 @@ public class App extends Application {
                 System.exit(0);
             }
         });
-        scene = new Scene(loadFXML("frontpage"), 800, 800);
+        scene = new Scene(loadFXML("/fxml/frontpage"), 800, 800);
         stage.setScene(scene);
         stage.show();
     }
