@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class GameAreaBuilderTest {
     
-    GameAreaBuilder builder;
+    GameAreaBuilder builder = new GameAreaBuilder();
     String[] layoutTest = {
         "1,,",
         ",,,"    
@@ -23,6 +23,7 @@ public class GameAreaBuilderTest {
     }
 
     @Test
-    public void tilesElementIsPresentWhennewAreaIsBuild() {
+    public void tilesElementIsPresentWhenANewAreaIsBuild() {
+        
     }
 }

@@ -6,7 +6,7 @@ import laatikkopeli.domain.Score;
 import laatikkopeli.domain.User;
 
 /**
- *
+ * Score data access interface
  * @author lasse
  */
 public interface ScoreDao {

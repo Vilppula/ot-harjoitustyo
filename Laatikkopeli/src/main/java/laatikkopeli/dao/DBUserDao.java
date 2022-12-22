@@ -6,6 +6,10 @@ import laatikkopeli.db.DBhandler;
 import laatikkopeli.domain.DBobject;
 import laatikkopeli.domain.User;
 
+/**
+ * Data access for User-type objects
+ * @author lasse
+ */
 public class DBUserDao implements UserDao {
 
     private final DBhandler handler;
@@ -19,6 +23,11 @@ public class DBUserDao implements UserDao {
         findAll();                                                              
     }
 
+    /**
+     * Save new user to database/ cahce
+     * @param user
+     * @return 
+     */
     @Override
     public boolean saveUser(User user) {
         if (this.users.contains(user)) {
@@ -31,18 +40,23 @@ public class DBUserDao implements UserDao {
         return success;
     }
 
+    /**
+     * Find single user from database/ cache
+     * @param user
+     * @return 
+     */
     @Override
     public User findUser(User user) {                                           //Checks if user is in cache
         if (this.users.contains(user)) {
             return this.users.get(this.users.indexOf(user));
         }
-        User dbUser = (User) handler.getRecord(user.getUsername());
-        if (dbUser != null) {
-            this.users.add(dbUser);
-        }
-        return dbUser;
+        return null;
     }
 
+    /**
+     * Find all User-type records from DB and return them as List<User>
+     * @return 
+     */
     @Override
     public List<User> findAll() {                                               //Load users to cache and return list
         if (this.users == null) {

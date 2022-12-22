@@ -15,7 +15,10 @@ import laatikkopeli.domain.DBobject;
 import laatikkopeli.domain.Score;
 import laatikkopeli.domain.User;
 
-
+/**
+ * This class uses JDBC to access SQLite database
+ * @author lasse
+ */
 public class DBhandler {                    //Sqlite database utility class
     
     private String dbName;
@@ -51,6 +54,10 @@ public class DBhandler {                    //Sqlite database utility class
         }
     }
     //========================================================================== Check that correct tables can be found from database
+    /**
+     * Create tables when db is created
+     * @return 
+     */
     public boolean initDBTables() {
         try {
             Statement statement = this.connection.createStatement();            //If correct tables are not present the they will be created here
@@ -67,6 +74,11 @@ public class DBhandler {                    //Sqlite database utility class
     }
     
     //========================================================================== Insert new record to database
+    /**
+     * Create new User- or Score-record
+     * @param dbo
+     * @return 
+     */
     public boolean newRecord(DBobject dbo) {                                    
         if (dbo.getClass() == User.class) {
             this.query = this.queryBuilder.newInsertQuery((User) dbo);
@@ -77,15 +89,22 @@ public class DBhandler {                    //Sqlite database utility class
     }
 
     //========================================================================== Get single record, return as DBobject
-    public User getRecord(String username) {                                //Get user-type record
+    /**
+     * 
+     * @param username
+     * @return 
+     */
+    public DBobject getRecord(String username) {                                    //Get user-type record
         this.query = this.queryBuilder.newSelectUserQuery(username);
         ResultSet results = select();
         try {
-            return new User(results.getString(1), results.getString(2), results.getString(3));
+            if (results.getRow() != 0) {
+                return new User(results.getString(1), results.getString(2), results.getString(3));
+            }
         } catch (SQLException ex) {
             Logger.getLogger(DBhandler.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
         }
+        return null;
     }
     
     //========================================================================== Get multiple records, return as List<DBobject>
@@ -185,7 +204,6 @@ public class DBhandler {                    //Sqlite database utility class
     public void printQuery() {
         System.out.println("KYSELY: " + this.query);
     }
-    
     
     public String getUserTableName() {
         return this.userFields.get(0);

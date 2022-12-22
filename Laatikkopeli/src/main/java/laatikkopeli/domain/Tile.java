@@ -10,7 +10,13 @@ public class Tile { //Tile has knowledege only about homebox it resides in and t
     private ImageView homebox;       //Imageview of this node
     private Actor actor;             //Actor inside this tile
     
-    
+    /**
+     * New Tile representing view inside one of the gamesquares. Has bottom-image (square is not occupied by an actor),
+     * homebox as reference to ImageView inside gamegrid and possible Actor occupying the square.
+     * @param bottom
+     * @param homebox
+     * @param actor 
+     */
     public Tile(Image bottom, ImageView homebox, Actor actor) {                 //Constructor to init tile with bottom layer image
         this.homebox = homebox;
         this.bottom = bottom;

@@ -4,6 +4,10 @@ package laatikkopeli.algorithm;
 
 import java.util.ArrayDeque;
 
+/**
+ * Algorithm finding shortest path for player in given situation (state).
+ * @author lasse
+ */
 public class SPAlgorithm {
     
     public int[] p;
@@ -17,6 +21,12 @@ public class SPAlgorithm {
     int[][] moves = {{-1,0},{+1,0},{0,-1},{0,+1}};
     
     //New SPA ==================================================================
+    /**
+     * Takes char[][] as representation of a current state of a game
+     * @param r
+     * @param width
+     * @param height 
+     */
     public SPAlgorithm(char[][] r, int width, int height) {                     //Instantiate algorthm for game that is being played
         h = height; w = width;                                                  //Set area limits
         this.r = r;                                                             //Remember obstacles (depicted in char[][])

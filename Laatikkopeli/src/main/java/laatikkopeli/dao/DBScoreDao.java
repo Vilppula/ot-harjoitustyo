@@ -12,7 +12,7 @@ import laatikkopeli.domain.Score;
 import laatikkopeli.domain.User;
 
 /**
- *
+ * Data access for Score-type objects
  * @author lasse
  */
 public class DBScoreDao implements ScoreDao {
