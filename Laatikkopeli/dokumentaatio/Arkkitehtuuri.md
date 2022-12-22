@@ -1,4 +1,8 @@
 # Ohjelman arkkitehtuurikuvaus (päivittyvä)
+
+## Pakkauskaavio
+<img src="https://github.com/Vilppula/ot-harjoitustyo/blob/master/Laatikkopeli/dokumentaatio/img/pakkauskaavio.png" width="800">  
+
 ## Luokkakuvaus
 <img src="https://github.com/Vilppula/ot-harjoitustyo/blob/master/Laatikkopeli/dokumentaatio/img/ClassDiagram.png" width="800">  
   
