@@ -16,4 +16,9 @@
 | 11.12|5h| Algoritmin toimintaan saattelemista |
 |12.12|6h| Algoritmin parantelu, käyttöliittymän parantelu, JavaDoc|
 |13.12|2h| JavaDoc, yleistä siistimistä |
-| |69h | 
+|17.12|4h| JavaDoc, testauksen parantelua |
+|18.12|3h| testaukseen liittyvien ongelmien ratkontaa |
+|20.12|4h| Pajaohjauksessa pariin ongelmaan ratkaisu. Testauksen parantelua.|
+|21.12|1h| Dokumentoinnin parantelua |
+|23.12| | |
+| |81h | 
