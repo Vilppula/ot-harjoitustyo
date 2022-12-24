@@ -4,15 +4,14 @@ Sovellus on ajanvietto-/pulmapeli, jonka tarkoitus on Tira2 kurssilla tehdyn laa
 kykyä löytää lyhyimpiä reittejä joita kulkemalla pelialueella oleva laatikko saadaan työnnettyä maaliin.
 ## Käyttäjät
 Luomalla pelaajaprofiili pelaajien on mahdollista tallettaa omia pelisuorituksiaan tai kilpailla toisiaan vastaan. 
-Käyttäjällä on jokin käyttäjänimi ja sitä vastaava salasana. Tämä voidaan toteuttaa hyvin kevyenä ratkaisuna, sillä käyttätileihin ei liity mitään
+Käyttäjällä on jokin käyttäjänimi ja sitä vastaava salasana. Käyttäjien hallinta voidaan toteuttaa hyvin kevyenä ratkaisuna, sillä käyttätileihin ei liity mitään
 arkaluontoista tietoa.
 ### Kirjautuminen uutena käyttäjänä
-- Käyttäjän tulee keksiä jokin pelaajanimi sekä sitä vastaava salasana. TEHTY
-- Käyttäjällä voi olla profiilikuva TEHTY
-- Uusi käyttäjä lisätään paikalliseen tietokantaan. TEHTY
+- Käyttäjän tulee keksiä jokin pelaajanimi sekä sitä vastaava salasana.
+- Käyttäjällä voi olla profiilikuva.
+- Uusi käyttäjä lisätään paikalliseen tietokantaan.
 ### Kirjautumisen jälkeen
-- Pääsy pelitiloihin
-- Käyttäjäkohtaiset pelitulokset tallennetaan tietokantaan. Paras pelialuekohtainen tulos jää voimaan.
+- Pääsy yksin tai kaksinpeliin
 ## Pelin pelaaminen
 ### Pelimoodit
 Peliin on mahdollista kehittää lukuisia, tavoitteiltaan ja haastavuustasoltaan eroavia pelimoodeja. Näistä
