@@ -8,24 +8,24 @@ import laatikkopeli.domain.GameLayout;
 public class GameAreaDao {
 
     private List<GameLayout> areas;
-    private String fileName ;
+    private String fileName;
     
     String[] testLayout1 = {                
-         ",,,,,,,,,,,,,,,"
-        ,",,,,,,#,#,,,,5,"
-        ,",,#####,#####,,"
-        ,",,#,,,#,#,,,#,,"
-        ,",,#,,,#,#,,,#,,"
-        ,",,#####,#####,,"
-        ,",,,,,,,,,,,,,,#"
-        ,",,#####,#####,,"
-        ,",,#####,######,"
-        ,",,,,,,,3,,,,,,,"
-        ,",,#####,#####,,"
-        ,",,#,,,#,#,,,#,,"
-        ,",,#####,#####,,"
-        ,",1,,,,,,,,,,,,,"
-        ,",,,,,,,,,,,,,,,"
+        ",,,,,,,,,,,,,,,"
+        , ",,,,,,#,#,,,,5,"
+        , ",,#####,#####,,"
+        , ",,#,,,#,#,,,#,,"
+        , ",,#,,,#,#,,,#,,"
+        , ",,#####,#####,,"
+        , ",,,,,,,,,,,,,,#"
+        , ",,#####,#####,,"
+        , ",,#####,######,"
+        , ",,,,,,,3,,,,,,,"
+        , ",,#####,#####,,"
+        , ",,#,,,#,#,,,#,,"
+        , ",,#####,#####,,"
+        , ",1,,,,,,,,,,,,,"
+        , ",,,,,,,,,,,,,,,"
     };
     
     private GameLayout level = new GameLayout(1, "testlevel", testLayout1);         //Use this until game chooser have been built
@@ -52,11 +52,11 @@ public class GameAreaDao {
         return this.areas;
     }
     
-    public List<GameLayout> getSinglePlayerAreas(){
+    public List<GameLayout> getSinglePlayerAreas() {
         return null;
     }
     
-    public List<GameLayout> getTwoPlayerAreas(){
+    public List<GameLayout> getTwoPlayerAreas() {
         return null;
     }
 }

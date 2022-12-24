@@ -12,7 +12,7 @@ public class GameAreaBuilder {
     private char[][] charState;
     private Tile[][] tiles;
     private ImagePicker images;
-    private Actor P1, P2, G1, G2;
+    private Actor p1, p2, g1, g2;
     
     /**
      * Initialize new gamearea and found required attributes (coordinates etc.)
@@ -25,7 +25,7 @@ public class GameAreaBuilder {
         this.charState = new char[height][width];                               //This depiction of state will be used with shortest path algorithm (class SPAlgorithm)
         this.tiles = new Tile[height][width];                                   //Reference to tile-objects. Connected to GridPane in gamegrid.fxml
         String[] layout = gameLayout.getLayout();
-        System.out.println("Lets create gamearea: h:"+height+", w:"+width);
+        System.out.println("Lets create gamearea: h:" + height + ", w:" + width);
         for (int i = 0; i < height; i++) {                                      //Go through layout, char by char
             for (int j = 0; j < width; j++) {
                 
@@ -33,14 +33,14 @@ public class GameAreaBuilder {
                 charState[i][j] = c;                                            
                 Actor actor = new Actor(i, j, c, images.pick(c));               //New actor. (from tiles and gates also -> considered null when put in tile)
                 if (c == '1') {
-                    P1 = actor;
+                    p1 = actor;
                 } else if (c == '2') {
-                    P2 = actor;
+                    p2 = actor;
                 } else if (c == '5') {
-                    G1 = actor;
+                    g1 = actor;
                 } else if (c == '6') {
-                    G2 = actor;
-                };
+                    g2 = actor;
+                }
                 
                 ImageView homebox = ggc.addToGrid(i, j);                        //Ask homebox (ImageView) from gamegrid controller by coordinate
                 Tile newTile = createTile(homebox, c, actor);                   //Create tile and pass it's homebox as reference
@@ -71,19 +71,19 @@ public class GameAreaBuilder {
     }
 
     public Actor getP1() {
-        return P1;
+        return p1;
     }
 
     public Actor getP2() {
-        return P2;
+        return p2;
     }
 
     public Actor getG1() {
-        return G1;
+        return g1;
     }
 
     public Actor getG2() {
-        return G2;
+        return g2;
     }
 
     public int getWidth() {

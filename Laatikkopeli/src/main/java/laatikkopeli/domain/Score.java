@@ -50,16 +50,12 @@ public class Score extends DBobject {
             return false;
         }
         final Score other = (Score) obj;
-        if (!Objects.equals(this.username, other.username)) {
-            return false;
+        if (Objects.equals(this.username, other.username)
+                && this.areaId == other.areaId
+                && Objects.equals(this.datetime, other.datetime)) {
+            return true;
         }
-        if (this.areaId != other.areaId) {
-            return false;
-        }
-        if (!Objects.equals(this.datetime, other.datetime)) {
-            return false;
-        }
-        return true;
+        return false;
     }
 
     @Override

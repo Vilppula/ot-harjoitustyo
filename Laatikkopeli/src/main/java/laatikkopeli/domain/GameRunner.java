@@ -53,7 +53,9 @@ public class GameRunner {
         this.charState = gab.getCharState();                                    //Charstate is used to inform SPAlgorithm about momentary situation in game
         this.players = new Actor[]{null, gab.getP1(), gab.getP2()};
         this.gates = new Actor[]{null, gab.getG1(), gab.getG2()};
-        if (players[2] != null) twoPlayers = true;
+        if (players[2] != null) {
+            twoPlayers = true;
+        }
         this.spa = new SPAlgorithm(charState, width, height);
         updateSPA();
     }
@@ -64,24 +66,26 @@ public class GameRunner {
      * @param code 
      */
     public void checkKey(KeyCode code) {                                        //Check keyboard code
-        String key = code.getName();
         Actor player = players[turn];                                           //Choose player in turn from players[null, player1, player2]
         boolean moved = false;
-        if (key.equals("Up")) {                                                 
+        if (code.getName().equals("Up")) {                                                 
             moved = move(player, -1, 0);                                        //Ask 'move'-method to change position of a character (instance of actor)
-        } else if (key.equals("Down")) {
+        } else if (code.getName().equals("Down")) {
             moved = move(player, 1, 0);
-        } else if (key.equals("Left")) {
+        } else if (code.getName().equals("Left")) {
             moved = move(player, 0, -1);
-        } else if (key.equals("Right")) {
+        } else if (code.getName().equals("Right")) {
             moved = move(player, 0, 1);
         }
-        if (moved) updateSPA();                                                 //If player was moved, calculate new shortest path
+        if (moved) {                                                            //If player was moved, calculate new shortest path
+            updateSPA();
+        }                                                 
         if (twoPlayers) {                                                       //Switch turn if two player game
             turn = -(turn - 3);                                                 // 1->2, 2->1
             this.gic.switchTurn();
         }
     }
+    
     /**
      * Method used to move actors (moveble).
      * 
@@ -102,8 +106,12 @@ public class GameRunner {
         charState[oldI][oldJ] = ',';
         actor.setI(newI);                                                       //Update actor's location
         actor.setJ(newJ);
-        if (actor.getRole() == '1') this.gic.updateP1Counter();                                           
-        if (actor.getRole() == '2') this.gic.updateP1Counter();                                           
+        if (actor.getRole() == '1') {
+            this.gic.updateP1Counter();
+        }                                           
+        if (actor.getRole() == '2') {
+            this.gic.updateP1Counter();
+        }                                           
         return true;
     }
     

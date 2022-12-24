@@ -72,6 +72,7 @@
             <exclude>/laatikkopeli/domain/GameArea*.*</exclude>
             <exclude>/laatikkopeli/domain/Image*.*</exclude>
             <exclude>/laatikkopeli/domain/GameRun*.*</exclude>
+            <exclude>/laatikkopeli/domain/Timer*.*</exclude>
           </excludes>
         </configuration>
       </plugin>

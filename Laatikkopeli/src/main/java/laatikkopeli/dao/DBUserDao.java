@@ -33,7 +33,7 @@ public class DBUserDao implements UserDao {
         if (this.users.contains(user)) {
             return false;
         }
-        boolean success = this.handler.newOrUpdate(user,true);                  //Ask for insertion of new DBobject
+        boolean success = this.handler.newOrUpdate(user, true);                 //Ask for insertion of new DBobject
         if (success) {                                                          //If successful, add user to runtimelist
             this.users.add(user);       
         }                  

@@ -103,7 +103,7 @@ public class QueryBuilder {
                 + "', datetime = " + score.getDatetime()
                 + ", points = " + score.getPoints()
                 + "\nWHERE rowid = (SELECT rowid FROM " + this.scoreTable 
-                + " WHERE levelID = " + score.getAreaId() +" AND "
+                + " WHERE levelID = " + score.getAreaId() + " AND "
                 + " points < " + score.getPoints()
                 + " ORDER BY points ASC LIMIT 1)";
         return this.query;

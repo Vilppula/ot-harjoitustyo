@@ -17,8 +17,7 @@ public class TimerHandler extends TimerTask {
     @Override
     public void run() {
         Platform.runLater(() -> {
-            this.seconds++;
-            if (this.seconds > 59) {
+            if (this.seconds++ > 59) {
                 this.seconds = 0; 
                 this.minutes++;
             }

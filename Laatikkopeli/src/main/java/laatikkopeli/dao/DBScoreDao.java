@@ -66,25 +66,20 @@ public class DBScoreDao implements ScoreDao {
     @Override
     public boolean addScore(Score score) {                                      //Top 10 check is done before this method is being called
         List<Score> newAreaTopScores = findByGameArea(score.getAreaId());
-        List<Score> newUserTopScores = findByUser(score.getUsername());
-        //Reject duplicates
-        if (newAreaTopScores.contains(score)){
+        if (newAreaTopScores.contains(score)) {                                 //Prevent duplicates here
             return false;
-        }    
-        //Check if score is worth top 10
-        newAreaTopScores.add(score);                                            //Add new score
-        newUserTopScores.add(score);                                            //Add score to user
+        }
+        findByUser(score.getUsername()).add(score);                             //Score gets added to user
+        newAreaTopScores.add(score);                                            //Add new score to game area
         if (newAreaTopScores.size() <= 10) {                                    //Check whether there are top 10 scores yet
             if (handler.newOrUpdate(score, true)) {
                 return true;
             }    
         }
-        newAreaTopScores = streamTopTen(newAreaTopScores);                      //Sort
-        if (newAreaTopScores.contains(score)) {                                 
-            
-            handler.newOrUpdate(score, true);
+        newAreaTopScores = streamTopTen(newAreaTopScores);                      //Sort and limit to 10
+        if (newAreaTopScores.contains(score)) {                                 //If after that new score remains on list...
+            handler.newOrUpdate(score, true);                                   //save it to database
         }
-        this.userScores.put(score.getUsername(), newUserTopScores);             //Add to map
         this.areaScores.put(score.getAreaId(), newAreaTopScores);               //Add to map
         return true;
     }
@@ -95,7 +90,9 @@ public class DBScoreDao implements ScoreDao {
      * @return 
      */
     private List<Score> streamTopTen(List<Score> list) {
-        if (list == null) return new ArrayList<>();
+        if (list == null) {
+            return new ArrayList<>();
+        }
         return list.stream()                                                    //Sort list by points, get top 10
                 .sorted((s1, s2)->s1.getPoints().compareTo(s2.getPoints()))
                 .limit(10)
@@ -108,7 +105,9 @@ public class DBScoreDao implements ScoreDao {
      * @return 
      */
     private List<Score> castToScore(List<DBobject> list) {
-        if (list == null) return new ArrayList<>();
+        if (list == null) {
+            return new ArrayList<>();
+        }
         return list.stream().map(Score.class::cast)
                 .collect(Collectors.toList());
     }
