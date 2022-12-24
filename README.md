@@ -7,7 +7,8 @@ Ohjelma toteutettu Java 11:llä. Käyttöliittymä on toteutettu JavaFX 13:lla.
 [Arkkitehtuurikuvaus](https://github.com/Vilppula/ot-harjoitustyo/blob/master/Laatikkopeli/dokumentaatio/Arkkitehtuuri.md)  
 [Tuntikirjanpito](https://github.com/Vilppula/ot-harjoitustyo/blob/master/Laatikkopeli/dokumentaatio/Tyoaikakirjanpito.md)  
 [changelog.md](https://github.com/Vilppula/ot-harjoitustyo/blob/master/Laatikkopeli/dokumentaatio/changelog.md)  
-[käyttöohje](https://github.com/Vilppula/ot-harjoitustyo/blob/master/Laatikkopeli/dokumentaatio/kayttoohje.md)
+[käyttöohje](https://github.com/Vilppula/ot-harjoitustyo/blob/master/Laatikkopeli/dokumentaatio/kayttoohje.md)  
+[Testausdokumentti](https://github.com/Vilppula/ot-harjoitustyo/blob/master/Laatikkopeli/dokumentaatio/testaus.md)  
 ## Ohjelman suorittaminen
 Ohjelman voi suorittaa komennolla
 ```bash
