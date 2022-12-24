@@ -39,10 +39,11 @@ public class DBhandler {                    //Sqlite database utility class
                     "modeType", "varchar(50)",
                     "levelID", "integer",
                     "datetime", "varchar(50)",
-                    "points", "integer"
+                    "points", "integer",
+                    "unique", "(username, levelID, datetime)"
             ));
     
-    // Constructor
+    
     public DBhandler(String dbName) {        //DB connection upon creation of instance
         this.dbName = dbName;
         this.queryBuilder = new QueryBuilder(this.userFields.get(0), this.scoreFields.get(0));
@@ -73,19 +74,23 @@ public class DBhandler {                    //Sqlite database utility class
         return false;
     }
     
-    //========================================================================== Insert new record to database
+    //========================================================================== Insert new record or update
     /**
      * Create new User- or Score-record
      * @param dbo
      * @return 
      */
-    public boolean newRecord(DBobject dbo) {                                    
+    public boolean newOrUpdate(DBobject dbo, boolean isNew) {                                    
         if (dbo.getClass() == User.class) {
             this.query = this.queryBuilder.newInsertQuery((User) dbo);
         } else if (dbo.getClass() == Score.class) {
-            this.query = this.queryBuilder.newInsertQuery((Score) dbo);
+            if (isNew) {
+                this.query = this.queryBuilder.newInsertQuery((Score) dbo);
+            } else {
+                this.query = this.queryBuilder.newUpdateScoresQuery((Score) dbo);
+            }
         }
-        return insert();
+        return insertOrUpdate();
     }
 
     //========================================================================== Get single record, return as DBobject
@@ -108,17 +113,32 @@ public class DBhandler {                    //Sqlite database utility class
     }
     
     //========================================================================== Get multiple records, return as List<DBobject>
+    /**
+     * Get all scores related to one GameLayout (top 10 scores persist)
+     * @param levelId
+     * @return 
+     */
     public List<DBobject> getScores(int levelId) {
         this.query = this.queryBuilder.newSelectScoreQuery(levelId);
         return collectToList(select());
     }
     
+    /**
+     * Get all scores related to one User
+     * @param username
+     * @return 
+     */
     public List<DBobject> getScores(String username) {
         this.query = this.queryBuilder.newSelectScoreQuery(username);
         return collectToList(select());
     }
     
     //========================================================================== Get all records by tablename, return as list of DBobjects
+    /**
+     * Get all dbobjects from one table
+     * @param tablename
+     * @return 
+     */
     public List<DBobject> getAll(String tablename) {                                 
         if (tablename.equals(userFields.get(0))) {
             this.query = this.queryBuilder.newSelectUserQuery();
@@ -129,7 +149,11 @@ public class DBhandler {                    //Sqlite database utility class
     }
     
     //========================================================================== Execute insert and notify
-    private boolean insert() {                       
+    /**
+     * Will be called after an insert-type query have been set by querybuilder.
+     * @return 
+     */
+    private boolean insertOrUpdate() {                       
         printQuery();
         Statement statement;
         try {
@@ -137,12 +161,15 @@ public class DBhandler {                    //Sqlite database utility class
             statement.execute(this.query);
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(DBhandler.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
     
     //========================================================================== Execute select and return resultSet
+    /**
+     * Will be called after a select-type query have been set by querybuilder.
+     * @return 
+     */
     private ResultSet select() {         
         printQuery();
         Statement statement;
@@ -152,24 +179,16 @@ public class DBhandler {                    //Sqlite database utility class
             results = statement.executeQuery(this.query);
             return results;
         } catch (SQLException ex) {
-            Logger.getLogger(DBhandler.class.getName()).log(Level.SEVERE, null, ex);
             return null;
-        }
-    }
-    //========================================================================== Execute update and notify
-    private boolean update() {
-        Statement statement;
-        try {
-            statement = this.connection.createStatement();
-            statement.executeQuery(this.query);
-            return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(DBhandler.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
         }
     }
     
     //========================================================================== ResultSet to List
+    /**
+     * Helper method to collect data from instance of JDBC ResultSet class
+     * @param results
+     * @return 
+     */
     public List<DBobject> collectToList(ResultSet results) {                    //Handle ResultSets and exeptions here. Return list or null.
         List<DBobject> list = new ArrayList<>();
         String table;
@@ -186,13 +205,17 @@ public class DBhandler {                    //Sqlite database utility class
             }
             return list;
             
-        } catch (SQLException ex) {
-            Logger.getLogger(DBhandler.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             return null;
         }
     }
     
     //========================================================================== Clear database (used to delete testDB)
+    /**
+     * This method deletes database file (used in testing)
+     * @return
+     * @throws SQLException 
+     */
     public boolean clearDB() throws SQLException {
         this.connection.close();
         File dbFile = new File(this.dbName + ".db");
@@ -202,7 +225,7 @@ public class DBhandler {                    //Sqlite database utility class
     
     //========================================================================== Print query
     public void printQuery() {
-        System.out.println("KYSELY: " + this.query);
+        //System.out.println("KYSELY: " + this.query);
     }
     
     public String getUserTableName() {

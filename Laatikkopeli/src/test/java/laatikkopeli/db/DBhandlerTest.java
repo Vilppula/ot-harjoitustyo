@@ -1,9 +1,13 @@
 package laatikkopeli.db;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import laatikkopeli.domain.DBobject;
 import laatikkopeli.domain.Score;
 import laatikkopeli.domain.User;
@@ -28,9 +32,20 @@ public class DBhandlerTest {
     }
     
     @Test
+    public void newDBFileIsCreatedWithGivenName() {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:testDB.db");
+            assertNotNull(connection);
+        } catch (SQLException ex) {
+            Logger.getLogger(DBhandlerTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    @Test
     public void newUserIsSavedToDB() {
         DBobject user = testUser;
-        assertEquals(true, this.dbhandler.newRecord(user));
+        assertEquals(true, this.dbhandler.newOrUpdate(user, true));
         DBobject newUser = this.dbhandler.getRecord("test");
         //assertEquals(user, newUser);
         assertEquals(1,1);
@@ -38,7 +53,7 @@ public class DBhandlerTest {
     
     @Test
     public void newScoreIsSavedToDB() {
-        assertEquals(true, this.dbhandler.newRecord(testScore));
+        assertEquals(true, this.dbhandler.newOrUpdate(testScore, true));
         List<DBobject> returnScores = this.dbhandler.getScores(1);
         assertEquals(true, returnScores.contains(testScore));
     }
@@ -50,8 +65,8 @@ public class DBhandlerTest {
     
     @Test
     public void savedUsersAreFoundOnListReturnedByHandler() {
-        dbhandler.newRecord(testUser);
-        dbhandler.newRecord(testUser2);
+        dbhandler.newOrUpdate(testUser, true);
+        dbhandler.newOrUpdate(testUser2, true);
         List<DBobject> list = dbhandler.getAll("users");
         assertEquals(true, list.contains(testUser));
         assertEquals(true, list.contains(testUser2));
@@ -59,8 +74,8 @@ public class DBhandlerTest {
     
     @Test
     public void savedScoresAreFoundOnListReturnedByHandler() {
-        dbhandler.newRecord(testScore);
-        dbhandler.newRecord(testScore2);
+        dbhandler.newOrUpdate(testScore, true);
+        dbhandler.newOrUpdate(testScore2, true);
         List<DBobject> list = dbhandler.getAll("scores");
         assertEquals(true, list.contains(testScore));
         assertEquals(true, list.contains(testScore2));

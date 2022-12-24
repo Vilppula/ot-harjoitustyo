@@ -14,8 +14,8 @@ public interface ScoreDao {
    
     public boolean addScore(Score score);
     
-    public List<Score> findByUser(User user);
+    public List<Score> findByUser(String username);
     
-    public List<Score> findByGameArea(GameLayout gameLayout);
+    public List<Score> findByGameArea(int areaId);
     
 }

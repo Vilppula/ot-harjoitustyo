@@ -61,4 +61,10 @@ public class Score extends DBobject {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Score{" + "username=" + username + ", modeType=" + modeType + ", areaId=" + areaId + ", datetime=" + datetime + ", points=" + points + '}';
+    }
+    
 }

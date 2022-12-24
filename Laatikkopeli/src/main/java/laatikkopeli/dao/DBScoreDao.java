@@ -1,5 +1,6 @@
 package laatikkopeli.dao;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -7,9 +8,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import laatikkopeli.db.DBhandler;
 import laatikkopeli.domain.DBobject;
-import laatikkopeli.domain.GameLayout;
 import laatikkopeli.domain.Score;
-import laatikkopeli.domain.User;
 
 /**
  * Data access for Score-type objects
@@ -39,8 +38,7 @@ public class DBScoreDao implements ScoreDao {
      * @return 
      */
     @Override
-    public List<Score> findByUser(User user) {
-        String username = user.getUsername();
+    public List<Score> findByUser(String username) {
         if (this.userScores.get(username) == null) {
             this.userScores.put(username, castToScore(handler.getScores(username)));
         }
@@ -53,8 +51,7 @@ public class DBScoreDao implements ScoreDao {
      * @return 
      */
     @Override
-    public List<Score> findByGameArea(GameLayout gameLayout) {
-        int areaId = gameLayout.getAreaId();
+    public List<Score> findByGameArea(int areaId) {
         if (this.areaScores.get(areaId) == null) {
             this.areaScores.put(areaId, castToScore(handler.getScores(areaId)));
         }
@@ -68,18 +65,41 @@ public class DBScoreDao implements ScoreDao {
      */
     @Override
     public boolean addScore(Score score) {                                      //Top 10 check is done before this method is being called
-        String username = score.getUsername();                                  
-        int areaId = score.getAreaId();
-        List<Score> newTopScores = this.areaScores.get(areaId);
-        newTopScores.add(score);
-        newTopScores = newTopScores.stream()                                    //Sort list by points, get top 10
+        List<Score> newAreaTopScores = findByGameArea(score.getAreaId());
+        List<Score> newUserTopScores = findByUser(score.getUsername());
+        //Reject duplicates
+        if (newAreaTopScores.contains(score)){
+            return false;
+        }    
+        //Check if score is worth top 10
+        newAreaTopScores.add(score);                                            //Add new score
+        newUserTopScores.add(score);                                            //Add score to user
+        if (newAreaTopScores.size() <= 10) {                                    //Check whether there are top 10 scores yet
+            if (handler.newOrUpdate(score, true)) {
+                return true;
+            }    
+        }
+        newAreaTopScores = streamTopTen(newAreaTopScores);                      //Sort
+        if (newAreaTopScores.contains(score)) {                                 
+            
+            handler.newOrUpdate(score, true);
+        }
+        this.userScores.put(score.getUsername(), newUserTopScores);             //Add to map
+        this.areaScores.put(score.getAreaId(), newAreaTopScores);               //Add to map
+        return true;
+    }
+    
+    /**
+     * Stream List<Score> sorted and limited to 10
+     * @param list
+     * @return 
+     */
+    private List<Score> streamTopTen(List<Score> list) {
+        if (list == null) return new ArrayList<>();
+        return list.stream()                                                    //Sort list by points, get top 10
                 .sorted((s1, s2)->s1.getPoints().compareTo(s2.getPoints()))
                 .limit(10)
                 .collect(Collectors.toList());
-                
-        this.userScores.get(username).add(score);
-        this.areaScores.put(areaId, newTopScores);
-        return true;
     }
     
     /**
@@ -87,7 +107,8 @@ public class DBScoreDao implements ScoreDao {
      * @param list
      * @return 
      */
-    private List<Score> castToScore(List<DBobject> list) {                      
+    private List<Score> castToScore(List<DBobject> list) {
+        if (list == null) return new ArrayList<>();
         return list.stream().map(Score.class::cast)
                 .collect(Collectors.toList());
     }

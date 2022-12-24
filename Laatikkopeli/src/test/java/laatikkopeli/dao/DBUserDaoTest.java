@@ -20,6 +20,7 @@ public class DBUserDaoTest {
     
     @Before
     public void setUpClass() {
+        DBH.initDBTables();
         DBUD = new DBUserDao(DBH);
     }
     

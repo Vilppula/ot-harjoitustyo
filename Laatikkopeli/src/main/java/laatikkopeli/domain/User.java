@@ -3,7 +3,10 @@ package laatikkopeli.domain;
 
 import java.util.Objects;
 
-//This class is describing user-object.
+/**
+ * Class representing user of Laatikkopeli
+ * @author lasse
+ */
 public class User extends DBobject {
     
     private String username;
@@ -50,4 +53,11 @@ public class User extends DBobject {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "User{" + "username=" + username + ", password=" + password + ", avatarURL=" + avatarURL + '}';
+    }
+    
+    
 }
