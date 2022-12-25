@@ -26,7 +26,7 @@ Sekä askelmäärä että kulunut aika otetaan talteen ja liitetään pelaajan k
 #### Kaksinpeli
 Kahden pelaajan versiossa kaksi pelaajaa liikkuu samalla pelialueella vuorotellen siirtoja tehden. Jokaisella
 siirrolla pelaajan harkinnan varaan jää edistääkö hän oman tavoitteensa saavuttamista vai vaikeuttaako hän 
-kilpailijan etenemistä. Muuttuvina tekijöinä pelialueella ovat erilaiset siirrettävät esteet.
+kilpailijan etenemistä.
 ## Käyttöliittymän määrittely
 ### Alkunäkymä
 - Alkunäkymä sisältää jonkin peliä esittelevän kuvan.
