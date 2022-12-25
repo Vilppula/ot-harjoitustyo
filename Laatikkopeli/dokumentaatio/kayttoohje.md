@@ -1,4 +1,7 @@
 # Käyttöohje
+### Ohjelman asentaminen
+Katso README. Suoritettavan jar-tiedoston voi joko luoda kansiossa Laatikkopeli komennolla "mvn package" tai lataamalla viimeisin release (kts. julkaisut)
+Jos ohjelma menee 'jumiin' ensimmäisellä käyttökerralla, kokeile avata ohjelma uudelleen.  
 ### Pelaajan luominen
 Pelaaja luodaan "Uusi pelaaja" -painikkeella. Tästä painikkeesta aukeaa näkymä, jossa käyttäjä keksii käyttäjänimem ja salasanan.  
 - Käyttäjänimi ei saa olla sama kuin jollain toisella pelaajalla
