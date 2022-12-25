@@ -34,16 +34,12 @@ kilpailijan etenemistä.
 - Linkki uuden pelaajan luomiseen
 - Kirjautuneen pelaajan tiedot (kahden pelaajan tapauksessa näitä on kaksi)
 - Linkit pelitiloihin (kun kirjautuminen on suoritettu)
-- Linkki parhaita pelituloksia esittelevään näkymään.
 ### Kirjautumisnäkymä
 - Nimikenttä ja salasanakenttä
 - Pelaajan profiilikuvan lisäys
 ### Pelitilat
 - Yhden pelaajan pelinäkymä
 - Kahden pelaajan pelinäkymä
-### Parhaiden pelituloksien näkymä
-- Listamuotoinen näkymä, jossa esitellään pelialuekohtaisesti parhaan tuloksen saanut pelaaja.
-  - Eri pelialueita voi selata.
 ### Pelinäkymä
 - Päivittyvä näkymä pelialueesta
   - pelaaja/pelaajat
