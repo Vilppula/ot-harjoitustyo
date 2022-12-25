@@ -11,7 +11,8 @@ arkaluontoista tietoa.
 - Käyttäjällä voi olla profiilikuva.
 - Uusi käyttäjä lisätään paikalliseen tietokantaan.
 ### Kirjautumisen jälkeen
-- Pääsy yksin tai kaksinpeliin
+- Valitaan yksin tai kaksinpeli
+- Valinnan perusteella näytetään joko yksin tai kaksinpelialueet, joista valitaan pelattava pelialue.
 ## Pelin pelaaminen
 ### Pelimoodit
 Peliin on mahdollista kehittää lukuisia, tavoitteiltaan ja haastavuustasoltaan eroavia pelimoodeja. Näistä
@@ -29,25 +30,25 @@ kilpailijan etenemistä. Muuttuvina tekijöinä pelialueella ovat erilaiset siir
 ## Käyttöliittymän määrittely
 ### Alkunäkymä
 - Alkunäkymä sisältää jonkin peliä esittelevän kuvan.
-- Sisäänkirjautumislomake TEHTY
-- Linkki uuden pelaajan luomiseen TEHTY
-- Kirjautuneen pelaajan tiedot (kahden pelaajan tapauksessa näitä on kaksi) TEHTY
-- Linkit pelitiloihin (kun kirjautuminen on suoritettu) TEHTY
+- Sisäänkirjautumislomake
+- Linkki uuden pelaajan luomiseen
+- Kirjautuneen pelaajan tiedot (kahden pelaajan tapauksessa näitä on kaksi)
+- Linkit pelitiloihin (kun kirjautuminen on suoritettu)
 - Linkki parhaita pelituloksia esittelevään näkymään.
 ### Kirjautumisnäkymä
-- Nimikenttä ja salasanakenttä TEHTY
-- Pelaajan profiilikuvan lisäys TEHTY
+- Nimikenttä ja salasanakenttä
+- Pelaajan profiilikuvan lisäys
 ### Pelitilat
-- Yhden pelaajan pelinäkymä TEHTY
-- Kahden pelaajan pelinäkymä TEHTY
+- Yhden pelaajan pelinäkymä
+- Kahden pelaajan pelinäkymä
 ### Parhaiden pelituloksien näkymä
 - Listamuotoinen näkymä, jossa esitellään pelialuekohtaisesti parhaan tuloksen saanut pelaaja.
   - Eri pelialueita voi selata.
 ### Pelinäkymä
-- Päivittyvä näkymä pelialueesta TEHTY
-  - pelaaja/pelaajat TEHTY
+- Päivittyvä näkymä pelialueesta
+  - pelaaja/pelaajat
   - laatikko/laatikot
-  - kiinteät esteet ja muuttuvat tekijät.
+  - kiinteät esteet
   - laskurit
 ## Mahdollisuudet jatkokehitykselle
 #### Lisää pelitiloja
