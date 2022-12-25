@@ -4,7 +4,7 @@
 <img src="https://github.com/Vilppula/ot-harjoitustyo/blob/master/Laatikkopeli/dokumentaatio/img/pakkauskaavio.png" width="800">  
 
 ## Luokkakuvaus
-<img src="https://github.com/Vilppula/ot-harjoitustyo/blob/master/Laatikkopeli/dokumentaatio/img/ClassDiagram.png" width="800">  
+<img src="https://github.com/Vilppula/ot-harjoitustyo/blob/master/Laatikkopeli/dokumentaatio/img/ProgramStructure.png" width="800">  
   
   
 Ohjelma on toteutettu JAVAFX FXML-projektina. Kaaviossa esitellyt controller-luokkien yhteys tapahtuu FXMLLoader-instanssin välityksenä niin,
