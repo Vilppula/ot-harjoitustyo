@@ -20,5 +20,7 @@
 |18.12|3h| testaukseen liittyvien ongelmien ratkontaa |
 |20.12|4h| Pajaohjauksessa pariin ongelmaan ratkaisu. Testauksen parantelua.|
 |21.12|1h| Dokumentoinnin parantelua |
-|23.12| | |
-| |81h | 
+|23.12|3h| Testauksen parantelua |
+|24.12|3h| Testauksen parantelua, dokumenttien parantelua |
+|25.12|4h| Dokumenttien parantelua, Pelialueiden lataaminen tiedostosta mukaan |
+| Yht.|86h | 
