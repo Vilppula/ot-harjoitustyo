@@ -2,6 +2,7 @@ package laatikkopeli.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 import java.util.logging.Level;
@@ -28,7 +29,8 @@ public class GameViewController implements Initializable {
     private GamegridController GGC;     //Child controllers
     private GameInfoController GIC;     //--"--
     private GameRunner gameRunner;      //Game logic
-    private GameAreaDao areas;
+    private GameAreaDao areaDao;
+    private List<GameLayout> areas;
     private GameLayout gameLayout;
     
     @FXML StackPane gameView;                                                   //Main container (display gameChoose or gameplay here)
@@ -44,7 +46,7 @@ public class GameViewController implements Initializable {
         this.gameplay.addEventFilter(KeyEvent.KEY_PRESSED,(event -> {           //Add filter to gameplay-node
             this.gameRunner.checkKey(event.getCode());                          //...which catches keypresses and notify GameRunner of them
         }));
-       this.areas = new GameAreaDao();                                          //Create game area service (to load saved gameareas)
+       this.areaDao = new GameAreaDao();                                          //Create game area service (to load saved gameareas)
     }    
     
     public void closeGameView() {                                               //Method to close this view
@@ -60,17 +62,19 @@ public class GameViewController implements Initializable {
     // CHOOSE GAME HERE ========================================================
     public void setUpSinglePlayerView(User user) {
         this.user1 = user;
+        areas = this.areaDao.getSinglePlayerAreas();
         loadGameAreas();
     }
     
     public void setUpTwoPlayerView(User user1, User user2) {
         this.user1 = user1; this.user2 = user2;
+        areas = this.areaDao.getTwoPlayerAreas();
         loadGameAreas();
     }
     
     public void loadGameAreas() {
         ButtonCreator butt = new ButtonCreator(100,780,8);
-        for (GameLayout gameLayout: this.areas.getAll()) {
+        for (GameLayout gameLayout: areas) {
             System.out.println("Ladataan kenttä "+gameLayout.getName());
             HBox box = butt.create(gameLayout);
             Button button = (Button) box.getChildrenUnmodifiable().get(0);
