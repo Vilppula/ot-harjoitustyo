@@ -1,4 +1,4 @@
-# Ohjelman arkkitehtuurikuvaus (päivittyvä)
+# Ohjelman arkkitehtuurikuvaus
 
 ## Pakkauskaavio
 <img src="https://github.com/Vilppula/ot-harjoitustyo/blob/master/Laatikkopeli/dokumentaatio/img/pakkauskaavio.png" width="800">  
@@ -15,6 +15,9 @@ että FXML-hierarkiassa ylempänä oleva controller-olio huolehtii yhteyden muod
 ### Sisään kirjautuminen
 <img src="https://github.com/Vilppula/ot-harjoitustyo/blob/master/Laatikkopeli/dokumentaatio/img/LoginScheme.jpg" width="700">  
 
-### Pelitulosten hakeminen
+### Pelitulosten hakeminen ja tallennus
 <img src="https://github.com/Vilppula/ot-harjoitustyo/blob/master/Laatikkopeli/dokumentaatio/img/ScoreDao.png" width="700"> 
 Pelitulosten pysyväistallennukseen tarkoitettu systeemi on olemassa, mutta sitä ei ole vielä otettu käyttöön.
+
+### Pelialueiden hakeminen
+<img src="https://github.com/Vilppula/ot-harjoitustyo/blob/master/Laatikkopeli/dokumentaatio/img/GameAreaDao.png" width="600">
